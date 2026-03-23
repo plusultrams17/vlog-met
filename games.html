@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黎明剣記 ゲーム公式サイト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho+B1:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/*================================================
+  GAMES PAGE SPECIFIC STYLES
+================================================*/
+
+/* HERO */
+.hero{margin-top:var(--hdr);position:relative;width:100%;min-height:380px;overflow:hidden;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(180deg,#0a0608 0%,#1a0e18 20%,#12091a 50%,#0d0a07 100%)}
+.hero::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 40%,rgba(196,30,30,.08) 0%,transparent 55%),
+  radial-gradient(ellipse at 70% 60%,rgba(200,168,78,.06) 0%,transparent 50%)}
+.hero::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 70%,#0d0a07 100%)}
+.hero__grid{position:absolute;inset:0;opacity:.04;
+  background-image:linear-gradient(rgba(200,168,78,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,78,.3) 1px,transparent 1px);
+  background-size:60px 60px}
+.hero__scanline{position:absolute;inset:0;opacity:.03;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,.1) 2px,rgba(255,255,255,.1) 4px)}
+.hero__glow{position:absolute;top:50%;left:50%;width:500px;height:500px;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(200,168,78,.06) 0%,transparent 70%);pointer-events:none}
+.hero__center{position:relative;z-index:5;text-align:center;padding:20px}
+.hero__sub{font-family:var(--sans);font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:rgba(200,168,78,.45);margin-bottom:12px}
+.hero__title{font-family:var(--serif);font-size:clamp(36px,6vw,58px);font-weight:900;letter-spacing:.2em;line-height:1.2;
+  background:linear-gradient(180deg,#fff 0%,#e8d5a0 40%,#c8a84e 70%,#8b6914 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  text-shadow:none;filter:drop-shadow(0 3px 12px rgba(200,168,78,.2))}
+.hero__en{font-family:var(--sans);font-size:9px;letter-spacing:.6em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:10px}
+.hero__line{width:80px;height:1px;margin:16px auto;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.hero__desc{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.08em;max-width:400px;margin:0 auto}
+
+/* Controller icon decoration */
+.hero__deco{position:absolute;pointer-events:none;opacity:.06}
+.hero__deco--l{left:40px;top:50%;transform:translateY(-50%);width:120px}
+.hero__deco--r{right:40px;top:50%;transform:translateY(-50%);width:100px}
+
+/*================================================
+  GAME CARDS
+================================================*/
+.games-list{display:flex;flex-direction:column;gap:28px}
+
+.game-card{width:100%;aspect-ratio:21/9;border-radius:6px;overflow:hidden;position:relative;cursor:pointer;
+  box-shadow:0 6px 30px rgba(0,0,0,.4);transition:transform .45s cubic-bezier(.25,.46,.45,.94),box-shadow .45s}
+.game-card:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(0,0,0,.5)}
+.game-card__in{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;position:relative;overflow:hidden}
+.game-card__in::before,.game-card__in::after{content:'';position:absolute;width:40px;height:40px;border-color:rgba(200,168,78,.2);border-style:solid;pointer-events:none}
+.game-card__in::before{top:16px;left:16px;border-width:1px 0 0 1px}
+.game-card__in::after{bottom:16px;right:16px;border-width:0 1px 1px 0}
+
+/* Shimmer overlay */
+.game-card__shimmer{position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.03) 45%,rgba(255,255,255,.06) 50%,rgba(255,255,255,.03) 55%,transparent 60%);
+  transform:translateX(-100%);transition:transform 1.2s}
+.game-card:hover .game-card__shimmer{transform:translateX(100%)}
+
+.game-card__badge{position:absolute;top:16px;right:16px;background:var(--red);color:#fff;font-size:9px;font-weight:700;padding:3px 14px;border-radius:2px;letter-spacing:.1em;z-index:2}
+.game-card__sub{font-size:10px;letter-spacing:.25em;color:rgba(255,255,255,.45);margin-bottom:8px;font-weight:500}
+.game-card__title{font-family:var(--serif);font-size:clamp(18px,3vw,30px);font-weight:900;color:#fff;letter-spacing:.15em;text-align:center;line-height:1.3;
+  text-shadow:0 2px 15px rgba(0,0,0,.5)}
+.game-card__en{font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:6px}
+.game-card__line{width:50px;height:1px;margin:12px auto;background:linear-gradient(90deg,transparent,rgba(200,168,78,.4),transparent)}
+.game-card__platforms{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;justify-content:center}
+.game-card__plat{padding:3px 10px;font-size:8px;font-weight:600;letter-spacing:.06em;border-radius:2px;color:#fff}
+.plat--ps5{background:rgba(0,55,145,.7)}.plat--ps4{background:rgba(0,68,165,.6)}
+.plat--xbox{background:rgba(16,124,16,.7)}.plat--pc{background:rgba(80,80,80,.7)}
+.plat--switch{background:rgba(230,0,18,.65)}.plat--ios{background:rgba(100,100,100,.7)}
+.plat--android{background:rgba(61,145,64,.7)}
+
+/* Individual card backgrounds */
+.gc1{background:linear-gradient(135deg,#0a0a2a 0%,#1a1040 20%,#2a0a1a 50%,#3a0a15 70%,#1a0508 100%)}
+.gc2{background:linear-gradient(135deg,#1a0828 0%,#2a0a3a 25%,#3a0a2a 50%,#2a051a 75%,#0d0510 100%)}
+.gc3{background:linear-gradient(135deg,#051a1a 0%,#0a2a2a 25%,#082828 50%,#0a2020 75%,#050d0d 100%)}
+.gc4{background:linear-gradient(135deg,#1a1508 0%,#2a2010 25%,#3a2a0a 50%,#2a1a05 75%,#0d0a03 100%)}
+
+/*================================================
+  LATEST NEWS LINK
+================================================*/
+.more-btn{text-align:center;margin-top:28px}
+.more-btn a{font-size:11px;color:rgba(255,255,255,.45);border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:2px;transition:all .2s}
+.more-btn a:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+
+/*================================================
+  RESPONSIVE
+================================================*/
+@media(max-width:1024px){
+  .hero__deco{display:none}
+  .game-card{aspect-ratio:16/9}
+}
+@media(max-width:768px){
+  .hdr .hdr__nav{display:none}
+  .hero{min-height:300px}
+  .game-card{aspect-ratio:16/10}
+  .game-card__in{padding:20px}
+  .game-card__title{font-size:clamp(16px,4vw,24px)!important}
+  .maki .maki__body{padding:10px 30px;min-width:200px}
+  .maki .maki__t{font-size:18px!important}
+}
+@media(max-width:480px){
+  .game-card{aspect-ratio:4/3}
+  .game-card__platforms{gap:4px}
+  .game-card__plat{font-size:7px;padding:2px 7px}
+}
+</style>
+</head>
+<body class="body-dk">
+<!--========== LOADER ==========-->
+<div class="loader" id="loader">
+  <div class="loader__circle">
+    <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#b91c1c" stroke="#8b0000" stroke-width="1.5"/><circle cx="40" cy="40" r="29" fill="none" stroke="#fff" stroke-width="1.8" opacity=".85"/><text x="40" y="37" text-anchor="middle" fill="#fff" font-family="'Shippori Mincho B1',serif" font-size="14" font-weight="800">黎明</text><text x="40" y="50" text-anchor="middle" fill="#fff" font-family="'Shippori Mincho B1',serif" font-size="10" font-weight="700">剣記</text></svg>
+  </div>
+</div>
+
+<!--========== HEADER (DARK) ==========-->
+<header class="hdr hdr--dk" id="hdr">
+  <div class="hdr__in">
+    <a href="index.html" class="hdr__logo"><svg viewBox="0 0 42 42" width="42" height="42"><circle cx="21" cy="21" r="20" fill="#b91c1c" stroke="#8b0000" stroke-width="1"/><circle cx="21" cy="21" r="16" fill="none" stroke="#fff" stroke-width="1.4" opacity=".88"/><text x="21" y="19" text-anchor="middle" fill="#fff" font-family="'Shippori Mincho B1',serif" font-size="10.5" font-weight="800">黎明</text><text x="21" y="29" text-anchor="middle" fill="#fff" font-family="'Shippori Mincho B1',serif" font-size="7.5" font-weight="700">剣記</text></svg></a>
+    <nav class="hdr__nav">
+      <a href="index.html">ポータルトップ</a>
+      <a href="news.html">最新情報</a>
+      <a href="about.html">作品紹介</a>
+      <a href="comics.html">原作</a>
+      <a href="anime.html">アニメ</a>
+      <a href="stage.html">舞台</a>
+      <a href="events.html">イベント</a>
+      <a href="games.html" class="act">ゲーム</a>
+    </nav>
+    <div class="hdr__rt">
+      <svg class="hdr__ic" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      <svg class="hdr__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+      <span class="hdr__map">ページ一覧</span>
+    </div>
+  </div>
+</header>
+
+<!--========== HERO ==========-->
+<section class="hero">
+  <div class="hero__grid"></div>
+  <div class="hero__scanline"></div>
+  <div class="hero__glow"></div>
+  <!-- Controller deco left -->
+  <div class="hero__deco hero__deco--l">
+    <svg viewBox="0 0 120 100" fill="none">
+      <ellipse cx="60" cy="55" rx="50" ry="30" fill="rgba(200,168,78,.3)" stroke="rgba(200,168,78,.2)" stroke-width="1"/>
+      <circle cx="35" cy="48" r="8" fill="none" stroke="rgba(200,168,78,.3)" stroke-width="1"/>
+      <circle cx="35" cy="48" r="3" fill="rgba(200,168,78,.15)"/>
+      <line x1="30" y1="48" x2="40" y2="48" stroke="rgba(200,168,78,.2)" stroke-width="1"/>
+      <line x1="35" y1="43" x2="35" y2="53" stroke="rgba(200,168,78,.2)" stroke-width="1"/>
+      <circle cx="80" cy="45" r="3" fill="rgba(200,168,78,.15)"/>
+      <circle cx="88" cy="50" r="3" fill="rgba(200,168,78,.15)"/>
+      <circle cx="80" cy="55" r="3" fill="rgba(200,168,78,.15)"/>
+      <circle cx="72" cy="50" r="3" fill="rgba(200,168,78,.15)"/>
+      <rect x="42" y="38" width="16" height="4" rx="2" fill="rgba(200,168,78,.12)"/>
+      <rect x="62" y="38" width="16" height="4" rx="2" fill="rgba(200,168,78,.12)"/>
+      <ellipse cx="42" cy="70" rx="14" ry="14" fill="none" stroke="rgba(200,168,78,.15)" stroke-width="1"/>
+      <ellipse cx="78" cy="70" rx="14" ry="14" fill="none" stroke="rgba(200,168,78,.15)" stroke-width="1"/>
+    </svg>
+  </div>
+  <!-- Controller deco right -->
+  <div class="hero__deco hero__deco--r">
+    <svg viewBox="0 0 100 120" fill="none">
+      <rect x="20" y="10" width="60" height="100" rx="8" fill="none" stroke="rgba(200,168,78,.2)" stroke-width="1"/>
+      <rect x="28" y="20" width="44" height="35" rx="3" fill="rgba(200,168,78,.08)"/>
+      <circle cx="40" cy="78" r="5" fill="rgba(200,168,78,.12)"/>
+      <circle cx="60" cy="78" r="5" fill="rgba(200,168,78,.12)"/>
+      <circle cx="40" cy="95" r="3" fill="rgba(200,168,78,.08)"/>
+      <circle cx="60" cy="95" r="3" fill="rgba(200,168,78,.08)"/>
+      <rect x="44" y="62" width="12" height="6" rx="3" fill="rgba(200,168,78,.1)"/>
+    </svg>
+  </div>
+  <div class="hero__center">
+    <div class="hero__sub">REIMEI KENKI</div>
+    <div class="hero__title">ゲーム</div>
+    <div class="hero__en">GAMES</div>
+    <div class="hero__line"></div>
+    <div class="hero__desc">「黎明剣記」公式ゲームタイトルの最新情報をお届けします</div>
+  </div>
+</section>
+
+<!--========== ORNAMENT ==========-->
+<div class="orn"></div>
+
+<!--========== ゲームタイトル一覧 ==========-->
+<section class="sec sec--dk" id="games">
+  <div class="sec__in">
+    <div class="maki reveal"><div class="maki__roll maki__roll--dk"></div><div class="maki__body maki__body--dk"><div class="maki__t maki__t--dk">ゲームタイトル</div><div class="maki__s maki__s--dk">GAME TITLES</div></div><div class="maki__roll maki__roll--dk"></div></div>
+
+    <div class="games-list">
+
+      <!--===== GAME 1: 暁風伝 =====-->
+      <div class="game-card reveal rd1">
+        <div class="game-card__in gc1">
+          <div class="game-card__shimmer"></div>
+          <div class="game-card__sub">家庭用ゲーム</div>
+          <div class="game-card__title">黎明剣記<br>暁風伝</div>
+          <div class="game-card__en">REIMEI KENKI &mdash; AKATSUKI CHRONICLES</div>
+          <div class="game-card__line"></div>
+          <div class="game-card__platforms">
+            <span class="game-card__plat plat--ps5">PS5</span>
+            <span class="game-card__plat plat--ps4">PS4</span>
+            <span class="game-card__plat plat--xbox">Xbox</span>
+            <span class="game-card__plat plat--pc">PC</span>
+            <span class="game-card__plat plat--switch">Switch</span>
+          </div>
+        </div>
+      </div>
+
+      <!--===== GAME 2: 暁風伝 弐 =====-->
+      <div class="game-card reveal rd2">
+        <div class="game-card__in gc2">
+          <div class="game-card__shimmer"></div>
+          <div class="game-card__badge">最新作</div>
+          <div class="game-card__sub">家庭用ゲーム</div>
+          <div class="game-card__title">黎明剣記<br>暁風伝 弐</div>
+          <div class="game-card__en">REIMEI KENKI &mdash; AKATSUKI CHRONICLES 2</div>
+          <div class="game-card__line"></div>
+          <div class="game-card__platforms">
+            <span class="game-card__plat plat--ps5">PS5</span>
+            <span class="game-card__plat plat--ps4">PS4</span>
+            <span class="game-card__plat plat--xbox">Xbox</span>
+            <span class="game-card__plat plat--pc">PC</span>
+            <span class="game-card__plat plat--switch">Switch</span>
+          </div>
+        </div>
+      </div>
+
+      <!--===== GAME 3: 剣戟ロワイアル =====-->
+      <div class="game-card reveal rd3">
+        <div class="game-card__in gc3">
+          <div class="game-card__shimmer"></div>
+          <div class="game-card__sub">スマートフォンアプリ</div>
+          <div class="game-card__title">黎明剣記<br>剣戟ロワイアル</div>
+          <div class="game-card__en">REIMEI KENKI &mdash; KENGEKI ROYALE</div>
+          <div class="game-card__line"></div>
+          <div class="game-card__platforms">
+            <span class="game-card__plat plat--ios">iOS</span>
+            <span class="game-card__plat plat--android">Android</span>
+          </div>
+        </div>
+      </div>
+
+      <!--===== GAME 4: 目指せ！最強剣士 =====-->
+      <div class="game-card reveal rd4">
+        <div class="game-card__in gc4">
+          <div class="game-card__shimmer"></div>
+          <div class="game-card__sub">ボードゲーム</div>
+          <div class="game-card__title">黎明剣記<br>目指せ！最強剣士</div>
+          <div class="game-card__en">REIMEI KENKI &mdash; MEZASE! SAIKYOU KENSHI</div>
+          <div class="game-card__line"></div>
+          <div class="game-card__platforms">
+            <span class="game-card__plat" style="background:rgba(160,120,40,.7)">ボードゲーム</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="more-btn reveal" style="margin-top:32px"><a href="#">→ ゲーム関連ニュース一覧</a></div>
+  </div>
+</section>
+
+<!--========== ORNAMENT ==========-->
+<div class="orn"></div>
+
+<!--========== FOOTER (DARK) ==========-->
+<footer class="ftr ftr--dk">
+  <div class="ftr__logos">
+    <div class="ftr__logo-i"><svg viewBox="0 0 100 28" height="28"><rect x="1" y="1" width="98" height="26" rx="3" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/><text x="50" y="19" text-anchor="middle" font-family="'Noto Sans JP',sans-serif" font-size="11" font-weight="900" fill="rgba(255,255,255,.45)">ファンタジア</text></svg></div>
+    <div class="ftr__div"></div>
+    <div class="ftr__logo-i"><svg viewBox="0 0 110 28" height="28"><text x="55" y="19" text-anchor="middle" font-family="'Noto Sans JP',sans-serif" font-size="13" font-weight="700" fill="rgba(255,255,255,.45)" letter-spacing=".12em">LUMINAS</text></svg></div>
+  </div>
+  <div class="ftr__social">
+    <a href="#" class="ftr__sc"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="#" class="ftr__sc"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+    <a href="#" class="ftr__sc"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12z"/></svg></a>
+  </div>
+  <div class="ftr__top" onclick="scrollTo({top:0,behavior:'smooth'})">&#9650; ページ上部へ</div>
+  <div class="ftr__cr">このホームページに掲載されている一切の文書・図版・写真等を、手段や形態を問わず複製、転載することを禁じます。<br>&copy; 桐谷蒼真／星雲社・ルミナス・Studio Arcana</div>
+</footer>
+
+<!--========== JAVASCRIPT ==========-->
+<script>
+(function(){
+/* Loading Screen */
+window.addEventListener('load',function(){
+  setTimeout(function(){document.getElementById('loader').classList.add('hide')},800);
+});
+
+/* Header scroll effect */
+var hdr=document.getElementById('hdr');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>50){
+    hdr.classList.add('scrolled');
+  }else{
+    hdr.classList.remove('scrolled');
+  }
+},{passive:true});
+
+/* Scroll reveal animations */
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+
+/* Smooth nav scroll */
+document.querySelectorAll('.hdr__nav a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var h=a.getAttribute('href');
+    if(h&&h!=='#'){
+      e.preventDefault();
+      var t=document.querySelector(h);
+      if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  });
+});
+
+/* Game card hover parallax effect */
+document.querySelectorAll('.game-card').forEach(function(card){
+  card.addEventListener('mousemove',function(e){
+    var rect=card.getBoundingClientRect();
+    var x=(e.clientX-rect.left)/rect.width-.5;
+    var y=(e.clientY-rect.top)/rect.height-.5;
+    var inner=card.querySelector('.game-card__in');
+    if(inner){
+      inner.style.transform='perspective(1000px) rotateY('+x*3+'deg) rotateX('+-y*3+'deg)';
+    }
+  });
+  card.addEventListener('mouseleave',function(){
+    var inner=card.querySelector('.game-card__in');
+    if(inner){
+      inner.style.transform='perspective(1000px) rotateY(0) rotateX(0)';
+      inner.style.transition='transform .5s ease';
+      setTimeout(function(){inner.style.transition=''},500);
+    }
+  });
+});
+
+})();
+</script>
+</body>
+</html>

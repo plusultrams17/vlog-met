@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アニメ「黎明剣記」公式サイト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho+B1:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/*================================================
+  ANIME PAGE STYLES
+================================================*/
+
+/* HERO */
+.anm-hero{margin-top:var(--hdr);position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(180deg,#0a0604 0%,#1a0d08 20%,#2a1510 40%,#1a0d08 70%,#0d0805 100%)}
+.anm-hero::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 40%,rgba(196,30,30,.08) 0%,transparent 60%),
+  radial-gradient(ellipse at 20% 70%,rgba(200,168,78,.04) 0%,transparent 50%),
+  radial-gradient(ellipse at 80% 30%,rgba(200,168,78,.03) 0%,transparent 50%)}
+.anm-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;
+  background:linear-gradient(transparent,var(--dk2))}
+/* Flame particles */
+.anm-hero__flames{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.anm-hero__flame{position:absolute;width:3px;height:3px;border-radius:50%;animation:flameRise linear infinite}
+@keyframes flameRise{0%{opacity:0;transform:translateY(0) scale(1)}20%{opacity:.8}80%{opacity:.3}100%{opacity:0;transform:translateY(-400px) scale(0)}}
+/* Side kanji deco */
+.anm-hero__kanji{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:80px;font-weight:900;letter-spacing:.3em;writing-mode:vertical-rl;opacity:.04;color:#fff;pointer-events:none}
+.anm-hero__kanji--l{left:30px}
+.anm-hero__kanji--r{right:30px}
+/* Center content */
+.anm-hero__center{position:relative;z-index:5;text-align:center;padding:40px 20px}
+.anm-hero__badge{display:inline-block;font-size:10px;letter-spacing:.3em;color:rgba(200,168,78,.6);border:1px solid rgba(200,168,78,.2);padding:4px 18px;border-radius:2px;margin-bottom:18px}
+.anm-hero__title{font-family:var(--serif);font-size:clamp(28px,5vw,48px);font-weight:900;color:#fff;letter-spacing:.15em;line-height:1.3;text-shadow:0 4px 30px rgba(196,30,30,.3)}
+.anm-hero__title span{color:var(--gold-lt);display:block;font-size:clamp(14px,2.5vw,22px);letter-spacing:.25em;margin-top:6px}
+.anm-hero__line{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:18px auto}
+.anm-hero__sub{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.2em}
+/* Ring decoration */
+.anm-hero__ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:380px;height:380px;pointer-events:none;opacity:.08}
+.anm-hero__ring svg{width:100%;height:100%}
+
+/* FEATURED (Infinity Castle) */
+.feat{max-width:var(--mw);margin:0 auto;padding:0 20px}
+.feat__card{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:21/9;cursor:pointer;box-shadow:0 8px 40px rgba(0,0,0,.5);transition:transform .4s,box-shadow .4s}
+.feat__card:hover{transform:translateY(-4px);box-shadow:0 12px 50px rgba(0,0,0,.6)}
+.feat__bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;
+  background:linear-gradient(135deg,#1a0505 0%,#4a0a15 25%,#2a0810 50%,#5a1020 75%,#1a0505 100%)}
+.feat__bg::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 50%,rgba(196,30,30,.15) 0%,transparent 50%),
+  radial-gradient(ellipse at 70% 50%,rgba(200,168,78,.08) 0%,transparent 50%)}
+.feat__bg::after{content:'';position:absolute;inset:12px;border:1px solid rgba(200,168,78,.12);border-radius:3px;pointer-events:none}
+.feat__content{position:relative;z-index:2;text-align:center;padding:30px}
+.feat__lbl{font-size:9px;letter-spacing:.35em;color:rgba(200,168,78,.5);margin-bottom:10px}
+.feat__ttl{font-family:var(--serif);font-size:clamp(20px,4vw,38px);font-weight:900;color:#fff;letter-spacing:.12em;text-shadow:0 4px 20px rgba(0,0,0,.5)}
+.feat__ttl-sub{font-family:var(--serif);font-size:clamp(12px,2vw,18px);color:var(--gold-lt);letter-spacing:.2em;margin-top:8px}
+.feat__date{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.15em;margin-top:14px}
+.feat__tag{display:inline-block;background:var(--red);color:#fff;font-size:9px;font-weight:700;padding:3px 14px;border-radius:2px;letter-spacing:.08em;margin-top:12px}
+
+/* VIDEO SECTION */
+.vid-area{position:relative;overflow:hidden}
+.vid-grid{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.vc{width:310px;flex-shrink:0;cursor:pointer}
+.vc__thumb{aspect-ratio:16/9;border-radius:5px;overflow:hidden;position:relative;box-shadow:0 5px 20px rgba(0,0,0,.4)}
+.vc__thumb-in{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform .5s}
+.vc:hover .vc__thumb-in{transform:scale(1.04)}
+.vc__play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;background:rgba(0,0,0,.55);border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.75);transition:all .3s}
+.vc:hover .vc__play{background:rgba(196,30,30,.75);border-color:#fff;transform:translate(-50%,-50%) scale(1.08)}
+.vc__play svg{width:18px;height:18px;fill:#fff;margin-left:3px}
+.vc__ttl{margin-top:10px;font-size:11px;color:var(--txt-lt);text-align:center;line-height:1.6}
+
+/* SERIES ARCHIVE */
+.arc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.arc{border-radius:5px;overflow:hidden;cursor:pointer;position:relative;box-shadow:0 4px 18px rgba(0,0,0,.4);transition:transform .35s,box-shadow .35s}
+.arc:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 10px 35px rgba(0,0,0,.55)}
+.arc__in{aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;position:relative;overflow:hidden;transition:transform .5s}
+.arc:hover .arc__in{transform:scale(1.03)}
+.arc__in::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.6));pointer-events:none}
+.arc__in::after{content:'';position:absolute;inset:8px;border:1px solid rgba(255,255,255,.06);border-radius:2px;pointer-events:none;transition:border-color .3s}
+.arc:hover .arc__in::after{border-color:rgba(200,168,78,.15)}
+.arc__year{font-size:9px;letter-spacing:.3em;color:rgba(200,168,78,.55);position:relative;z-index:1;margin-bottom:6px}
+.arc__ttl{font-family:var(--serif);font-size:clamp(13px,1.8vw,17px);font-weight:800;color:#fff;letter-spacing:.12em;text-align:center;line-height:1.5;position:relative;z-index:1;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.arc__line{width:35px;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,78,.3),transparent);margin:8px auto 0;position:relative;z-index:1}
+/* Archive card backgrounds */
+.ab1{background:linear-gradient(135deg,#1a2a1a 0%,#2a4a2a 40%,#1a3a1a 100%)}
+.ab2{background:linear-gradient(135deg,#3d1520 0%,#5a2030 40%,#2d0a15 100%)}
+.ab3{background:linear-gradient(135deg,#2d1a10 0%,#4a3020 40%,#1a0d08 100%)}
+.ab4{background:linear-gradient(135deg,#1a1a3d 0%,#2a2a5a 40%,#0d0d2a 100%)}
+.ab5{background:linear-gradient(135deg,#2a1a0a 0%,#5a3a18 40%,#1a0d05 100%)}
+.ab6{background:linear-gradient(135deg,#0a2a3a 0%,#1a4a5a 40%,#052030 100%)}
+.ab7{background:linear-gradient(135deg,#2d0505 0%,#5a1010 35%,#8a1a1a 55%,#3d0808 100%)}
+
+/* EVENTS SECTION */
+.ev-scroll{display:flex;gap:14px;overflow-x:auto;padding:0 0 14px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.ev-scroll::-webkit-scrollbar{height:4px}
+.ev-scroll::-webkit-scrollbar-thumb{background:var(--gold-dk);border-radius:2px}
+.ev-scroll::-webkit-scrollbar-track{background:rgba(255,255,255,.05)}
+.ec{min-width:240px;aspect-ratio:3/4;border-radius:5px;overflow:hidden;flex-shrink:0;scroll-snap-align:start;cursor:pointer;position:relative;box-shadow:0 5px 20px rgba(0,0,0,.3);transition:transform .35s}
+.ec:hover{transform:translateY(-4px) scale(1.02)}
+.ec__in{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;position:relative}
+.ec__badge{position:absolute;top:12px;right:12px;background:var(--red);color:#fff;font-size:8px;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:.06em}
+.ec__t{font-family:var(--serif);font-size:20px;font-weight:800;color:#fff;letter-spacing:.12em;text-shadow:0 2px 10px rgba(0,0,0,.5);text-align:center;line-height:1.4}
+.ec__s{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.12em;margin-top:6px}
+
+/* MERCHANDISE */
+.merch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.mc{border-radius:4px;overflow:hidden;cursor:pointer;background:var(--dk-sec2);box-shadow:0 3px 12px rgba(0,0,0,.3);transition:transform .3s,box-shadow .3s}
+.mc:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.mc__img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;position:relative}
+.mc__circle{width:62%;height:62%;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,.85);text-align:center;letter-spacing:.04em;line-height:1.4;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.mc__tag{position:absolute;top:6px;left:6px;font-size:7.5px;font-weight:600;color:var(--gold);letter-spacing:.06em}
+.mc__nm{padding:7px 8px;font-size:10px;text-align:center;color:var(--txt-lt)}
+.mi1{background:linear-gradient(135deg,#c8583a,#a04028)}
+.mi2{background:linear-gradient(135deg,#5a8a5a,#3a6a3a)}
+.mi3{background:linear-gradient(135deg,#d4a84e,#b08828)}
+.mi4{background:linear-gradient(135deg,#8a5aa0,#6a3a80)}
+
+/* MORE BUTTON */
+.more-btn{text-align:center;margin-top:24px}
+.more-btn a{font-size:11px;color:rgba(255,255,255,.45);border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:2px;transition:all .2s;letter-spacing:.08em}
+.more-btn a:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+
+/* FOOTER OVERRIDES */
+.anm-ftr{background:var(--dk2);padding:35px 0 22px;text-align:center;position:relative;z-index:3;border-top:1px solid rgba(200,168,78,.08)}
+.anm-ftr .ftr__div{background:rgba(255,255,255,.15)}
+.anm-ftr .ftr__social{display:flex;justify-content:center;gap:16px;margin-bottom:14px}
+.anm-ftr .ftr__sc{width:20px;height:20px;color:rgba(255,255,255,.35);transition:color .2s;display:flex;align-items:center;justify-content:center}
+.anm-ftr .ftr__sc:hover{color:#fff}
+.anm-ftr .ftr__top{font-size:10px;color:rgba(255,255,255,.3);margin-bottom:14px;cursor:pointer;transition:color .2s}
+.anm-ftr .ftr__top:hover{color:var(--red)}
+.anm-ftr .ftr__cr{font-size:9px;color:rgba(255,255,255,.2);line-height:1.9;max-width:580px;margin:0 auto}
+
+/*================================================
+  RESPONSIVE
+================================================*/
+@media(max-width:1024px){
+  .anm-hero__kanji{display:none}
+  .anm-hero__ring{width:280px;height:280px}
+  .vid-grid{flex-wrap:wrap}
+  .vc{width:280px}
+}
+@media(max-width:768px){
+  .anm-hero{min-height:380px}
+  .arc-grid{grid-template-columns:repeat(2,1fr)}
+  .merch-grid{grid-template-columns:repeat(3,1fr)}
+  .vid-grid{flex-direction:column;align-items:center}
+  .vc{width:90%;max-width:400px}
+  .feat__card{aspect-ratio:16/9}
+  .ec{min-width:200px}
+}
+@media(max-width:480px){
+  .arc-grid{grid-template-columns:1fr}
+  .merch-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body class="body-dk">
+<!--========== LOADER ==========-->
+<div class="loader" id="loader">
+  <div class="loader__circle">
+    <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#b91c1c" stroke="#8b0000" stroke-width="1.5"/><circle cx="40" cy="40" r="29" fill="none" stroke="#fff" stroke-width="1.8" opacity=".85"/><circle cx="40" cy="40" r="23" fill="none" stroke="rgba(255,255,255,.2)" stroke-width=".5"/><text x="40" y="37" text-anchor="middle" fill="#fff" font-family="'Shippori Mincho B1',serif" font-size="14" font-weight="800">黎明</text><text x="40" y="50" text-anchor="middle" fill="#fff" font-family="'Shippori Mincho B1',serif" font-size="10" font-weight="700">剣記</text></svg>
+  </div>
+</div>
+
+<!--========== HEADER ==========-->
+<header class="hdr hdr--dk" id="hdr">
+  <div class="hdr__in">
+    <a href="index.html" class="hdr__logo"><svg viewBox="0 0 42 42" width="42" height="42"><circle cx="21" cy="21" r="20" fill="#b91c1c" stroke="#8b0000" stroke-width="1"/><circle cx="21" cy="21" r="16" fill="none" stroke="#fff" stroke-width="1.4" opacity=".88"/><circle cx="21" cy="21" r="13" fill="none" stroke="rgba(255,255,255,.25)" stroke-width=".5"/><text x="21" y="19" text-anchor="middle" fill="#fff" font-family="'Shippori Mincho B1',serif" font-size="10.5" font-weight="800">黎明</text><text x="21" y="29" text-anchor="middle" fill="#fff" font-family="'Shippori Mincho B1',serif" font-size="7.5" font-weight="700">剣記</text></svg></a>
+    <nav class="hdr__nav">
+      <a href="index.html">ポータルトップ</a>
+      <a href="news.html">最新情報</a>
+      <a href="about.html">作品紹介</a>
+      <a href="comics.html">原作</a>
+      <a href="anime.html" class="act">アニメ</a>
+      <a href="stage.html">舞台</a>
+      <a href="events.html">イベント</a>
+      <a href="games.html">ゲーム</a>
+    </nav>
+    <div class="hdr__rt">
+      <svg class="hdr__ic" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      <svg class="hdr__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+    </div>
+  </div>
+</header>
+
+<!--========== HERO ==========-->
+<section class="anm-hero">
+  <!-- Flame particles -->
+  <div class="anm-hero__flames" id="flames"></div>
+  <!-- Ring decoration -->
+  <div class="anm-hero__ring">
+    <svg viewBox="0 0 380 380">
+      <circle cx="190" cy="190" r="180" fill="none" stroke="#c41e1e" stroke-width="2" opacity=".4"/>
+      <circle cx="190" cy="190" r="170" fill="none" stroke="#c41e1e" stroke-width=".5" opacity=".2"/>
+      <circle cx="190" cy="190" r="155" fill="none" stroke="rgba(200,168,78,.3)" stroke-width=".5" stroke-dasharray="4 8"/>
+    </svg>
+  </div>
+  <!-- Side kanji -->
+  <div class="anm-hero__kanji anm-hero__kanji--l">黎明剣記</div>
+  <div class="anm-hero__kanji anm-hero__kanji--r">天穹城篇</div>
+  <!-- Center content -->
+  <div class="anm-hero__center">
+    <div class="anm-hero__badge">ANIMATION</div>
+    <h1 class="anm-hero__title">
+      アニメ「黎明剣記」
+      <span>REIMEI KENKI</span>
+    </h1>
+    <div class="anm-hero__line"></div>
+    <p class="anm-hero__sub">Studio Arcana 制作</p>
+  </div>
+</section>
+
+<!--========== FEATURED: 天穹城篇 ==========-->
+<section class="sec sec--dk" style="padding:40px 0 55px">
+  <div class="feat reveal">
+    <div class="feat__card">
+      <div class="feat__bg">
+        <div class="feat__content">
+          <div class="feat__lbl">THEATRICAL FILM</div>
+          <div class="feat__ttl">劇場版「黎明剣記」</div>
+          <div class="feat__ttl-sub">天穹城篇</div>
+          <div class="feat__date">三部作 ── 第一章 2025年10月10日公開</div>
+          <div class="feat__tag">NOW SHOWING</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--========== ORNAMENT ==========-->
+<div class="orn"></div>
+
+<!--========== 映像 (Videos) ==========-->
+<section class="sec sec--dk2" id="videos">
+  <div class="sec__in">
+    <div class="maki reveal"><div class="maki__roll maki__roll--dk"></div><div class="maki__body maki__body--dk"><div class="maki__t maki__t--dk">映像</div><div class="maki__s maki__s--dk">MOVIE</div></div><div class="maki__roll maki__roll--dk"></div></div>
+    <div class="vid-area">
+      <div class="vid-grid">
+        <div class="vc reveal rd1">
+          <div class="vc__thumb">
+            <div class="vc__thumb-in" style="background:linear-gradient(135deg,#2d0a08,#5a1a15,#1a0505)">
+              <svg width="60" height="36" viewBox="0 0 60 36"><text x="30" y="14" text-anchor="middle" fill="rgba(255,255,255,.45)" font-family="'Shippori Mincho B1',serif" font-size="7">劇場版 黎明剣記</text><text x="30" y="28" text-anchor="middle" fill="rgba(255,255,255,.35)" font-family="'Shippori Mincho B1',serif" font-size="10">天穹城篇 本PV</text></svg>
+            </div>
+            <div class="vc__play"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg></div>
+          </div>
+          <div class="vc__ttl">劇場版「黎明剣記」天穹城篇<br>第一章 本予告</div>
+        </div>
+        <div class="vc reveal rd2">
+          <div class="vc__thumb">
+            <div class="vc__thumb-in" style="background:linear-gradient(135deg,#0a1a30,#1a3558,#050d18)">
+              <svg width="60" height="36" viewBox="0 0 60 36"><text x="30" y="14" text-anchor="middle" fill="rgba(255,255,255,.45)" font-size="7">剣聖修練篇</text><text x="30" y="28" text-anchor="middle" fill="rgba(255,255,255,.35)" font-size="8">ノンクレジットED</text></svg>
+            </div>
+            <div class="vc__play"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg></div>
+          </div>
+          <div class="vc__ttl">テレビアニメ「黎明剣記」剣聖修練篇<br>ノンクレジットエンディング</div>
+        </div>
+        <div class="vc reveal rd3">
+          <div class="vc__thumb">
+            <div class="vc__thumb-in" style="background:linear-gradient(135deg,#1a1a08,#3d3818,#0d0d05)">
+              <svg width="60" height="36" viewBox="0 0 60 36"><text x="30" y="14" text-anchor="middle" fill="rgba(255,255,255,.45)" font-size="7">鍛冶の秘里篇</text><text x="30" y="28" text-anchor="middle" fill="rgba(255,255,255,.35)" font-size="8">Digest</text></svg>
+            </div>
+            <div class="vc__play"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg></div>
+          </div>
+          <div class="vc__ttl">テレビアニメ「黎明剣記」鍛冶の秘里篇<br>ダイジェスト映像</div>
+        </div>
+      </div>
+    </div>
+    <div class="more-btn reveal"><a href="#">映像一覧を見る →</a></div>
+  </div>
+</section>
+
+<!--========== ORNAMENT ==========-->
+<div class="orn"></div>
+
+<!--========== シリーズアーカイブ (Series Archive) ==========-->
+<section class="sec sec--dk" id="archive">
+  <div class="sec__in">
+    <div class="maki reveal"><div class="maki__roll maki__roll--dk"></div><div class="maki__body maki__body--dk"><div class="maki__t maki__t--dk">シリーズアーカイブ</div><div class="maki__s maki__s--dk">SERIES ARCHIVE</div></div><div class="maki__roll maki__roll--dk"></div></div>
+    <div class="arc-grid">
+      <div class="arc reveal rd1">
+        <div class="arc__in ab1">
+          <div class="arc__year">2019</div>
+          <div class="arc__ttl">覚醒篇<br>～始まりの剣～</div>
+          <div class="arc__line"></div>
+        </div>
+      </div>
+      <div class="arc reveal rd2">
+        <div class="arc__in ab2">
+          <div class="arc__year">2020</div>
+          <div class="arc__ttl">劇場版<br>幽冥列車篇</div>
+          <div class="arc__line"></div>
+        </div>
+      </div>
+      <div class="arc reveal rd3">
+        <div class="arc__in ab3">
+          <div class="arc__year">2021</div>
+          <div class="arc__ttl">幽冥列車篇<br>TV版</div>
+          <div class="arc__line"></div>
+        </div>
+      </div>
+      <div class="arc reveal rd1">
+        <div class="arc__in ab4">
+          <div class="arc__year">2021 - 2022</div>
+          <div class="arc__ttl">華街潜入篇</div>
+          <div class="arc__line"></div>
+        </div>
+      </div>
+      <div class="arc reveal rd2">
+        <div class="arc__in ab5">
+          <div class="arc__year">2023</div>
+          <div class="arc__ttl">鍛冶の秘里篇</div>
+          <div class="arc__line"></div>
+        </div>
+      </div>
+      <div class="arc reveal rd3">
+        <div class="arc__in ab6">
+          <div class="arc__year">2024</div>
+          <div class="arc__ttl">剣聖修練篇</div>
+          <div class="arc__line"></div>
+        </div>
+      </div>
+      <div class="arc reveal rd1" style="grid-column:span 3">
+        <div class="arc__in ab7" style="aspect-ratio:48/9">
+          <div class="arc__year">2025</div>
+          <div class="arc__ttl">劇場版「黎明剣記」天穹城篇</div>
+          <div class="arc__line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--========== ORNAMENT ==========-->
+<div class="orn"></div>
+
+<!--========== イベント (Events) ==========-->
+<section class="sec sec--dk2" id="events">
+  <div class="sec__in">
+    <div class="maki reveal"><div class="maki__roll maki__roll--dk"></div><div class="maki__body maki__body--dk"><div class="maki__t maki__t--dk">イベント</div><div class="maki__s maki__s--dk">EVENT</div></div><div class="maki__roll maki__roll--dk"></div></div>
+    <div class="ev-scroll">
+      <div class="ec reveal rd1">
+        <div class="ec__in" style="background:linear-gradient(135deg,#3d0808,#8b1a1a 40%,#c41e1e 60%,#3d0808)">
+          <div class="ec__badge">NEW</div>
+          <div class="ec__t">黎明剣記<br>オーケストラコンサート</div>
+          <div class="ec__s">ORCHESTRA CONCERT</div>
+        </div>
+      </div>
+      <div class="ec reveal rd2">
+        <div class="ec__in" style="background:linear-gradient(135deg,#1a2d4a,#2a4a70 40%,#1a3050)">
+          <div class="ec__badge">2025</div>
+          <div class="ec__t">ワールドツアー<br>上映</div>
+          <div class="ec__s">WORLD TOUR SCREENING</div>
+        </div>
+      </div>
+      <div class="ec reveal rd3">
+        <div class="ec__in" style="background:linear-gradient(135deg,#4a2060,#7a3890 40%,#5a2870)">
+          <div class="ec__t">黎明祭</div>
+          <div class="ec__s">REIMEI MATSURI</div>
+        </div>
+      </div>
+      <div class="ec reveal rd4">
+        <div class="ec__in" style="background:linear-gradient(135deg,#d4688a,#e88aaa 40%,#c4587a)">
+          <div class="ec__t">コラボカフェ</div>
+          <div class="ec__s">COLLABORATION CAFE</div>
+        </div>
+      </div>
+      <div class="ec reveal rd5">
+        <div class="ec__in" style="background:linear-gradient(135deg,#2a4a2a,#4a7a4a 40%,#1a3a1a)">
+          <div class="ec__t">黎明剣記展</div>
+          <div class="ec__s">EXHIBITION</div>
+        </div>
+      </div>
+    </div>
+    <div class="more-btn reveal"><a href="events.html">イベント一覧 →</a></div>
+  </div>
+</section>
+
+<!--========== ORNAMENT ==========-->
+<div class="orn orn--sm"></div>
+
+<!--========== 商品情報 (Merchandise) ==========-->
+<section class="sec sec--dk" id="goods">
+  <div class="sec__in">
+    <div class="maki reveal"><div class="maki__roll maki__roll--dk"></div><div class="maki__body maki__body--dk"><div class="maki__t maki__t--dk">商品情報</div><div class="maki__s maki__s--dk">GOODS</div></div><div class="maki__roll maki__roll--dk"></div></div>
+    <div class="merch-grid">
+      <div class="mc reveal rd1"><div class="mc__img"><span class="mc__tag">天穹城篇</span><div class="mc__circle mi1">Blu-ray<br>BOX</div></div><div class="mc__nm">Blu-ray&DVD</div></div>
+      <div class="mc reveal rd2"><div class="mc__img"><span class="mc__tag">天穹城篇</span><div class="mc__circle mi2">パンフ<br>レット</div></div><div class="mc__nm">劇場パンフレット</div></div>
+      <div class="mc reveal rd3"><div class="mc__img"><span class="mc__tag">SOUNDTRACK</span><div class="mc__circle mi3">OST</div></div><div class="mc__nm">オリジナルサウンドトラック</div></div>
+      <div class="mc reveal rd4"><div class="mc__img"><span class="mc__tag">LIMITED</span><div class="mc__circle mi4">キーホルダー</div></div><div class="mc__nm">劇場限定グッズ</div></div>
+    </div>
+    <div class="more-btn reveal"><a href="#">商品一覧 →</a></div>
+  </div>
+</section>
+
+<!--========== ORNAMENT ==========-->
+<div class="orn orn--sm"></div>
+
+<!--========== FOOTER ==========-->
+<footer class="ftr ftr--dk">
+  <div class="ftr__logos">
+    <div class="ftr__logo-i"><svg viewBox="0 0 100 28" height="28"><rect x="1" y="1" width="98" height="26" rx="3" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/><text x="50" y="19" text-anchor="middle" font-family="'Noto Sans JP',sans-serif" font-size="11" font-weight="900" fill="rgba(255,255,255,.5)">ファンタジア</text></svg></div>
+    <div class="ftr__div"></div>
+    <div class="ftr__logo-i"><svg viewBox="0 0 110 28" height="28"><text x="55" y="19" text-anchor="middle" font-family="'Noto Sans JP',sans-serif" font-size="13" font-weight="700" fill="rgba(255,255,255,.5)" letter-spacing=".12em">LUMINAS</text></svg></div>
+    <div class="ftr__div"></div>
+    <div class="ftr__logo-i"><svg viewBox="0 0 130 28" height="28"><text x="65" y="19" text-anchor="middle" font-family="'Noto Sans JP',sans-serif" font-size="12" font-weight="700" fill="rgba(255,255,255,.5)" letter-spacing=".08em">Studio Arcana</text></svg></div>
+  </div>
+  <div class="ftr__social">
+    <a href="#" class="ftr__sc"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="#" class="ftr__sc"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+    <a href="#" class="ftr__sc"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12z"/></svg></a>
+  </div>
+  <div class="ftr__top" onclick="scrollTo({top:0,behavior:'smooth'})">&#9650; ページ上部へ</div>
+  <div class="ftr__cr">このホームページに掲載されている一切の文書・図版・写真等を、手段や形態を問わず複製、転載することを禁じます。<br>&copy; 桐谷蒼真／星雲社・ルミナス・Studio Arcana</div>
+</footer>
+
+<!--========== JAVASCRIPT ==========-->
+<script>
+(function(){
+/* Loading Screen */
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loader').classList.add('hide')},800)});
+
+/* Header scroll effect */
+var hdr=document.getElementById('hdr');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>50){
+    hdr.classList.add('scrolled');
+  }else{
+    hdr.classList.remove('scrolled');
+  }
+},{passive:true});
+
+/* Flame particles in hero */
+var flamesEl=document.getElementById('flames');
+if(flamesEl){
+  for(var i=0;i<25;i++){
+    var f=document.createElement('div');
+    f.className='anm-hero__flame';
+    var x=Math.random()*100;
+    var delay=Math.random()*8;
+    var dur=4+Math.random()*6;
+    var size=2+Math.random()*3;
+    var colors=['rgba(196,30,30,.6)','rgba(200,168,78,.5)','rgba(232,160,80,.4)','rgba(255,100,50,.3)'];
+    f.style.cssText='left:'+x+'%;bottom:'+(Math.random()*30)+'%;width:'+size+'px;height:'+size+'px;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-delay:'+delay+'s;animation-duration:'+dur+'s';
+    flamesEl.appendChild(f);
+  }
+}
+
+/* Scroll reveal */
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+
+/* Smooth nav scroll */
+document.querySelectorAll('.hdr__nav a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var h=a.getAttribute('href');
+    if(h&&h!=='#'){
+      e.preventDefault();
+      var t=document.querySelector(h);
+      if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  });
+});
+})();
+</script>
+</body>
+</html>

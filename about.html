@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黎明剣記とは ｜ 黎明剣記 ポータルサイト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho+B1:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/*================================================
+  ABOUT PAGE — HERO
+================================================*/
+.about-hero{
+  margin-top:var(--hdr);position:relative;width:100%;min-height:520px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(180deg,#1a1410 0%,#2a1e14 30%,#1a1410 70%,#0d0a07 100%);
+}
+.about-hero::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 50%,rgba(200,168,78,.06) 0%,transparent 60%)}
+.about-hero__katana{position:absolute;pointer-events:none;opacity:.08}
+.about-hero__katana--l{left:5%;top:50%;transform:translateY(-50%) rotate(-12deg);width:380px}
+.about-hero__katana--r{right:5%;top:50%;transform:translateY(-50%) rotate(12deg);width:380px}
+.about-hero__center{position:relative;z-index:5;text-align:center;padding:40px 20px}
+.about-hero__sub{font-family:var(--serif);font-size:12px;letter-spacing:.5em;color:rgba(200,168,78,.45);margin-bottom:18px}
+.about-hero__title{font-family:var(--serif);font-size:clamp(36px,7vw,68px);font-weight:900;
+  color:transparent;letter-spacing:.15em;line-height:1.3;
+  background:linear-gradient(180deg,#f5efe3 0%,#e8d5a0 40%,#c8a84e 70%,#8b6914 100%);
+  -webkit-background-clip:text;background-clip:text;
+  text-shadow:none;filter:drop-shadow(0 4px 15px rgba(200,168,78,.2))}
+.about-hero__en{font-size:10px;letter-spacing:.6em;text-transform:uppercase;color:rgba(200,168,78,.3);margin-top:14px}
+.about-hero__line{width:80px;height:1px;margin:20px auto 0;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+/* Floating particles */
+.about-hero__particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.about-hero__p{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:0;animation:particleFloat 6s ease-in-out infinite}
+@keyframes particleFloat{0%{opacity:0;transform:translateY(0)}20%{opacity:.3}80%{opacity:.15}100%{opacity:0;transform:translateY(-120px)}}
+
+/*================================================
+  STORY DESCRIPTION
+================================================*/
+.about-story{padding:65px 0 55px}
+.about-story__lead{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--brn);
+  text-align:center;letter-spacing:.12em;line-height:2.2;margin-bottom:35px}
+.about-story__text{font-family:var(--serif);font-size:14px;color:var(--txt);line-height:2.4;
+  max-width:800px;margin:0 auto;text-align:justify;letter-spacing:.04em}
+.about-story__text p{margin-bottom:22px}
+.about-story__text p:last-child{margin-bottom:0}
+.about-story__highlight{
+  background:linear-gradient(180deg,transparent 60%,rgba(200,168,78,.15) 60%);
+  padding:0 2px;font-weight:700;color:var(--brn-dk)}
+.about-story__sep{display:flex;align-items:center;justify-content:center;gap:12px;margin:35px 0}
+.about-story__sep-line{width:60px;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,78,.35),transparent)}
+.about-story__sep-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.3}
+
+/*================================================
+  STATISTICS CARDS
+================================================*/
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:10px}
+.stat-card{background:#fff;border-radius:5px;padding:28px 16px;text-align:center;position:relative;
+  box-shadow:0 3px 12px rgba(0,0,0,.06);border:1px solid rgba(200,168,78,.12);
+  transition:transform .35s,box-shadow .35s;overflow:hidden}
+.stat-card:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(0,0,0,.1)}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gold-dk),var(--gold),var(--gold-dk))}
+.stat-card__icon{width:48px;height:48px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(200,168,78,.08),rgba(200,168,78,.15));border-radius:50%}
+.stat-card__icon svg{width:24px;height:24px;color:var(--gold-dk)}
+.stat-card__num{font-family:var(--serif);font-size:22px;font-weight:900;color:var(--brn);
+  letter-spacing:.06em;line-height:1.3}
+.stat-card__lbl{font-size:11px;color:var(--txt-m);margin-top:6px;letter-spacing:.04em}
+
+/*================================================
+  TIMELINE
+================================================*/
+.timeline{position:relative;padding:20px 0 10px}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,transparent,var(--gold) 10%,var(--gold) 90%,transparent);
+  transform:translateX(-50%);opacity:.25}
+.tl-item{display:flex;align-items:flex-start;margin-bottom:35px;position:relative}
+.tl-item:last-child{margin-bottom:0}
+.tl-item--l{flex-direction:row}
+.tl-item--r{flex-direction:row-reverse}
+.tl-item__content{width:calc(50% - 35px);position:relative}
+.tl-item--l .tl-item__content{text-align:right;padding-right:10px}
+.tl-item--r .tl-item__content{text-align:left;padding-left:10px}
+.tl-item__dot{position:absolute;left:50%;top:8px;transform:translateX(-50%);
+  width:16px;height:16px;border-radius:50%;background:var(--gold);
+  border:3px solid var(--cream);box-shadow:0 0 0 2px rgba(200,168,78,.3);z-index:2}
+.tl-item__year{font-family:var(--serif);font-size:20px;font-weight:900;color:var(--brn);
+  letter-spacing:.08em;margin-bottom:4px}
+.tl-item__month{font-size:11px;color:var(--gold-dk);font-weight:600;letter-spacing:.06em;margin-bottom:5px}
+.tl-item__desc{font-size:12.5px;color:var(--txt);line-height:1.8;letter-spacing:.02em}
+.tl-item__tag{display:inline-block;padding:2px 10px;font-size:9px;font-weight:600;color:#fff;
+  border-radius:2px;letter-spacing:.04em;margin-bottom:6px}
+.tl-item__tag--manga{background:var(--grn)}
+.tl-item__tag--anime{background:var(--red)}
+.tl-item__tag--movie{background:var(--gold-dk)}
+.tl-item__tag--event{background:var(--pur)}
+
+/*================================================
+  RESPONSIVE
+================================================*/
+@media(max-width:1024px){
+  .about-hero__katana{display:none}
+}
+@media(max-width:768px){
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .timeline::before{left:20px}
+  .tl-item{flex-direction:row!important}
+  .tl-item__content{width:100%!important;text-align:left!important;padding-left:45px!important;padding-right:0!important}
+  .tl-item__dot{left:20px!important;transform:translateX(-50%)}
+  .about-hero{min-height:400px}
+  .about-story__lead{font-size:15px}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .stat-card{padding:20px 10px}
+  .stat-card__num{font-size:18px}
+}
+</style>
+</head>
+<body class="body-lt">
+<!--========== LOADING SCREEN ==========-->
+<div class="loader" id="loader">
+  <div class="loader__circle">
+    <svg viewBox="0 0 80 80">
+      <circle cx="40" cy="40" r="36" fill="#b91c1c" stroke="#8b0000" stroke-width="1.5"/>
+      <circle cx="40" cy="40" r="29" fill="none" stroke="#fff" stroke-width="1.8" opacity=".85"/>
+      <circle cx="40" cy="40" r="23" fill="none" stroke="rgba(255,255,255,.2)" stroke-width=".5"/>
+      <text x="40" y="37" text-anchor="middle" fill="#fff" font-family="'Shippori Mincho B1',serif" font-size="14" font-weight="800">黎明</text>
+      <text x="40" y="50" text-anchor="middle" fill="#fff" font-family="'Shippori Mincho B1',serif" font-size="10" font-weight="700">剣記</text>
+    </svg>
+  </div>
+</div>
+
+<!--========== PAGE BACKGROUND ==========-->
+<div class="page-bg"><div class="page-bg__tex"></div><div class="page-bg__grain"></div></div>
+
+<!--========== GOLD CLOUD DECORATIONS ==========-->
+<div class="cloud-deco cL1"><svg viewBox="0 0 260 160"><defs><linearGradient id="gc1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#d4b85c" stop-opacity=".4"/><stop offset="100%" stop-color="#8b6914" stop-opacity=".15"/></linearGradient></defs><path d="M50,80 Q80,40 130,60 Q170,35 210,55 Q240,42 250,65 Q258,88 230,92 Q245,115 200,108 Q175,125 130,100 Q90,120 60,105 Q25,112 15,90 Q2,68 30,65 Q15,48 50,50 Z" fill="url(#gc1)"/></svg></div>
+<div class="cloud-deco cR1"><svg viewBox="0 0 220 140"><defs><linearGradient id="gc2" x1="1" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d4b85c" stop-opacity=".35"/><stop offset="100%" stop-color="#8b6914" stop-opacity=".1"/></linearGradient></defs><path d="M170,70 Q140,35 90,50 Q55,30 25,52 Q5,40 2,62 Q-2,82 25,85 Q10,105 55,100 Q80,115 130,92 Q165,110 185,96 Q205,100 210,82 Q218,62 195,60 Q210,42 170,45 Z" fill="url(#gc2)"/></svg></div>
+<div class="cloud-deco cL2"><svg viewBox="0 0 300 120"><path d="M60,60 Q95,25 155,45 Q200,20 250,42 Q280,30 290,52 Q298,72 270,75 Q285,95 240,90 Q210,105 155,82 Q100,100 70,88 Q30,95 20,75 Q5,55 35,52 Q18,35 60,40 Z" fill="url(#gc1)" opacity=".6"/></svg></div>
+<div class="cloud-deco cR2"><svg viewBox="0 0 270 110"><path d="M210,55 Q175,22 120,40 Q80,18 40,38 Q15,28 8,48 Q0,68 28,70 Q12,88 60,84 Q90,98 145,78 Q190,95 220,82 Q250,88 258,70 Q265,50 240,48 Q255,32 210,35 Z" fill="url(#gc2)" opacity=".5"/></svg></div>
+
+<!--========== BUTTERFLY DECORATIONS ==========-->
+<div class="bfly bfly--1"><svg viewBox="0 0 45 32" fill="none"><path d="M22,16 Q12,4 3,10 Q-1,18 9,21 Q14,23 20,17 Z" fill="#c8a84e" opacity=".65"/><path d="M22,16 Q32,4 41,10 Q45,18 35,21 Q30,23 24,17 Z" fill="#c8a84e" opacity=".65"/><path d="M22,16 Q16,22 12,30 Q18,28 22,19 Z" fill="#a08030" opacity=".4"/><path d="M22,16 Q28,22 32,30 Q26,28 22,19 Z" fill="#a08030" opacity=".4"/><line x1="22" y1="10" x2="22" y2="22" stroke="#8b6914" stroke-width=".6"/></svg></div>
+<div class="bfly bfly--2"><svg viewBox="0 0 45 32" fill="none"><path d="M22,16 Q12,4 3,10 Q-1,18 9,21 Q14,23 20,17 Z" fill="#c8a84e" opacity=".5"/><path d="M22,16 Q32,4 41,10 Q45,18 35,21 Q30,23 24,17 Z" fill="#c8a84e" opacity=".5"/><path d="M22,16 Q16,22 12,30 Q18,28 22,19 Z" fill="#a08030" opacity=".35"/><path d="M22,16 Q28,22 32,30 Q26,28 22,19 Z" fill="#a08030" opacity=".35"/><line x1="22" y1="10" x2="22" y2="22" stroke="#8b6914" stroke-width=".6"/></svg></div>
+
+<!--========== HEADER (LIGHT) ==========-->
+<header class="hdr hdr--lt" id="hdr">
+  <div class="hdr__in">
+    <a href="index.html" class="hdr__logo"><svg viewBox="0 0 42 42" width="42" height="42"><circle cx="21" cy="21" r="20" fill="#b91c1c" stroke="#8b0000" stroke-width="1"/><circle cx="21" cy="21" r="16" fill="none" stroke="#fff" stroke-width="1.4" opacity=".88"/><circle cx="21" cy="21" r="13" fill="none" stroke="rgba(255,255,255,.25)" stroke-width=".5"/><text x="21" y="19" text-anchor="middle" fill="#fff" font-family="'Shippori Mincho B1',serif" font-size="10.5" font-weight="800">黎明</text><text x="21" y="29" text-anchor="middle" fill="#fff" font-family="'Shippori Mincho B1',serif" font-size="7.5" font-weight="700">剣記</text></svg></a>
+    <nav class="hdr__nav">
+      <a href="index.html">ポータルトップ</a>
+      <a href="index.html#news">最新情報</a>
+      <a href="about.html" class="act">作品紹介</a>
+      <a href="comics.html">原作</a>
+      <a href="#">アニメ</a>
+      <a href="#">舞台</a>
+      <a href="index.html#events">イベント</a>
+      <a href="#">ゲーム</a>
+    </nav>
+    <div class="hdr__rt">
+      <svg class="hdr__ic" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      <svg class="hdr__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+      <span class="hdr__map">ページ一覧</span>
+    </div>
+  </div>
+</header>
+
+<!--========== HERO SECTION ==========-->
+<section class="about-hero">
+  <!-- Floating particles -->
+  <div class="about-hero__particles">
+    <div class="about-hero__p" style="left:15%;bottom:20%;animation-delay:0s"></div>
+    <div class="about-hero__p" style="left:30%;bottom:10%;animation-delay:1.2s"></div>
+    <div class="about-hero__p" style="left:50%;bottom:25%;animation-delay:2.4s"></div>
+    <div class="about-hero__p" style="left:65%;bottom:15%;animation-delay:0.8s"></div>
+    <div class="about-hero__p" style="left:80%;bottom:20%;animation-delay:3.6s"></div>
+    <div class="about-hero__p" style="left:25%;bottom:5%;animation-delay:4.2s"></div>
+    <div class="about-hero__p" style="left:70%;bottom:8%;animation-delay:1.8s"></div>
+    <div class="about-hero__p" style="left:45%;bottom:30%;animation-delay:5s"></div>
+  </div>
+  <!-- Katana SVG decorations -->
+  <div class="about-hero__katana about-hero__katana--l">
+    <svg viewBox="0 0 380 60" fill="none">
+      <!-- blade -->
+      <path d="M20,30 L340,28 Q360,28 370,25 L380,22 L370,30 Q360,32 340,32 L20,30 Z" fill="rgba(200,168,78,.25)" stroke="rgba(200,168,78,.15)" stroke-width=".5"/>
+      <!-- tsuba (guard) -->
+      <ellipse cx="20" cy="30" rx="12" ry="18" fill="none" stroke="rgba(200,168,78,.3)" stroke-width="1.5"/>
+      <ellipse cx="20" cy="30" rx="8" ry="13" fill="none" stroke="rgba(200,168,78,.15)" stroke-width=".5"/>
+      <!-- handle -->
+      <rect x="2" y="25" width="18" height="10" rx="2" fill="rgba(200,168,78,.12)"/>
+      <line x1="5" y1="25" x2="5" y2="35" stroke="rgba(200,168,78,.15)" stroke-width=".5"/>
+      <line x1="9" y1="25" x2="9" y2="35" stroke="rgba(200,168,78,.15)" stroke-width=".5"/>
+      <line x1="13" y1="25" x2="13" y2="35" stroke="rgba(200,168,78,.15)" stroke-width=".5"/>
+      <line x1="17" y1="25" x2="17" y2="35" stroke="rgba(200,168,78,.15)" stroke-width=".5"/>
+      <!-- hamon line -->
+      <path d="M25,30 Q60,26 100,31 Q140,27 180,30 Q220,26 260,31 Q300,27 340,29" stroke="rgba(255,255,255,.08)" stroke-width=".8" fill="none"/>
+    </svg>
+  </div>
+  <div class="about-hero__katana about-hero__katana--r">
+    <svg viewBox="0 0 380 60" fill="none">
+      <path d="M360,30 L40,28 Q20,28 10,25 L0,22 L10,30 Q20,32 40,32 L360,30 Z" fill="rgba(200,168,78,.25)" stroke="rgba(200,168,78,.15)" stroke-width=".5"/>
+      <ellipse cx="360" cy="30" rx="12" ry="18" fill="none" stroke="rgba(200,168,78,.3)" stroke-width="1.5"/>
+      <ellipse cx="360" cy="30" rx="8" ry="13" fill="none" stroke="rgba(200,168,78,.15)" stroke-width=".5"/>
+      <rect x="360" y="25" width="18" height="10" rx="2" fill="rgba(200,168,78,.12)"/>
+      <line x1="363" y1="25" x2="363" y2="35" stroke="rgba(200,168,78,.15)" stroke-width=".5"/>
+      <line x1="367" y1="25" x2="367" y2="35" stroke="rgba(200,168,78,.15)" stroke-width=".5"/>
+      <line x1="371" y1="25" x2="371" y2="35" stroke="rgba(200,168,78,.15)" stroke-width=".5"/>
+      <line x1="375" y1="25" x2="375" y2="35" stroke="rgba(200,168,78,.15)" stroke-width=".5"/>
+      <path d="M355,30 Q320,26 280,31 Q240,27 200,30 Q160,26 120,31 Q80,27 40,29" stroke="rgba(255,255,255,.08)" stroke-width=".8" fill="none"/>
+    </svg>
+  </div>
+  <!-- Center content -->
+  <div class="about-hero__center">
+    <div class="about-hero__sub">ABOUT REIMEI KENKI</div>
+    <h1 class="about-hero__title">黎明剣記とは</h1>
+    <div class="about-hero__en">REIMEI KENKI</div>
+    <div class="about-hero__line"></div>
+  </div>
+</section>
+
+<!--========== ORNAMENT ==========-->
+<div class="orn"></div>
+
+<!--========== STORY DESCRIPTION ==========-->
+<section class="sec sec--lt about-story" id="story">
+  <div class="sec__in">
+    <div class="maki reveal">
+      <div class="maki__roll maki__roll--gd"></div>
+      <div class="maki__body maki__body--lt">
+        <div class="maki__t maki__t--lt">作品紹介</div>
+        <div class="maki__s maki__s--lt">INTRODUCTION</div>
+      </div>
+      <div class="maki__roll maki__roll--gd"></div>
+    </div>
+
+    <p class="about-story__lead reveal">
+      時は大正。闇に潜む影魔が棲む世界──<br>
+      少年は、家族を奪った闇に立ち向かう。
+    </p>
+
+    <div class="about-story__text reveal">
+      <p>
+        <span class="about-story__highlight">『黎明剣記』</span>は、<span class="about-story__highlight">桐谷蒼真</span>による日本の漫画作品。
+        『月刊ファンタジア』（星雲社）にて<span class="about-story__highlight">2016年創刊号より連載が開始</span>され、
+        2020年最終号にて最終回を迎えた。コミックス全20巻。
+      </p>
+      <p>
+        時は大正。世界には人知れず「影魔」と呼ばれる闇の存在が潜んでいた。心優しき少年・朝霧蓮は、ある日家族を影魔に奪われ、唯一生き残った妹・凛は呪いにより影魔の力に侵されてしまう。妹を救う方法を求め、蓮は古より影魔を討つ組織「護剣衆」の門を叩く。厳しき修行の末、黎明刀を手にした蓮は、仲間たちと共に闇に立ち向かう壮大な物語。
+      </p>
+      <p>
+        2019年4月よりテレビアニメがアニメーション制作会社<span class="about-story__highlight">Studio Arcana</span>により放送開始。
+        圧倒的な映像美と音楽で原作の世界観を見事に再現し、社会現象とも呼べる大ブームを巻き起こした。
+        「覚醒篇 ～始まりの剣～」「幽冥列車篇」「華街潜入篇」「鍛冶の秘里篇」「剣聖修練篇」と4シーズンにわたりTVアニメが放送された。
+      </p>
+      <p>
+        2020年10月に公開された劇場版<span class="about-story__highlight">「黎明剣記」幽冥列車篇</span>は、
+        大ヒットを記録し、日本のアニメ映画の歴史に名を刻んだ。
+        その後も「天穹城篇」三部作として劇場版の制作が発表され、ファンの期待を集めている。
+      </p>
+      <p>
+        原作漫画の累計発行部数は<span class="about-story__highlight">8000万部</span>を突破（電子版含む）。
+        舞台化、ゲーム化、数々のコラボレーション企画など、あらゆるメディアミックスが展開され、
+        老若男女を問わず愛される、日本を代表するエンターテインメント作品となった。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!--========== ORNAMENT ==========-->
+<div class="orn orn--sm"></div>
+
+<!--========== STATISTICS ==========-->
+<section class="sec sec--lt" id="stats">
+  <div class="sec__in">
+    <div class="maki reveal">
+      <div class="maki__roll maki__roll--gd"></div>
+      <div class="maki__body maki__body--lt">
+        <div class="maki__t maki__t--lt">数字で見る黎明剣記</div>
+        <div class="maki__s maki__s--lt">STATISTICS</div>
+      </div>
+      <div class="maki__roll maki__roll--gd"></div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card reveal rd1">
+        <div class="stat-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="9" y1="7" x2="17" y2="7"/><line x1="9" y1="11" x2="14" y2="11"/></svg>
+        </div>
+        <div class="stat-card__num">8000万部<span style="font-size:13px">突破</span></div>
+        <div class="stat-card__lbl">累計発行部数（電子版含む）</div>
+      </div>
+      <div class="stat-card reveal rd2">
+        <div class="stat-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+        </div>
+        <div class="stat-card__num">全20巻</div>
+        <div class="stat-card__lbl">コミックス</div>
+      </div>
+      <div class="stat-card reveal rd3">
+        <div class="stat-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M10 9l5 3-5 3V9z"/><line x1="6" y1="22" x2="18" y2="22"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+        </div>
+        <div class="stat-card__num">4シーズン</div>
+        <div class="stat-card__lbl">TVアニメ</div>
+      </div>
+      <div class="stat-card reveal rd4">
+        <div class="stat-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19.82 2H4.18C3.53 2 3 2.53 3 3.18v17.64A1.18 1.18 0 004.18 22h15.64c.65 0 1.18-.53 1.18-1.18V3.18C21 2.53 20.47 2 19.82 2z"/><path d="M7 2v20"/><path d="M17 2v20"/><path d="M3 7h4"/><path d="M17 7h4"/><path d="M3 12h18"/><path d="M3 17h4"/><path d="M17 17h4"/></svg>
+        </div>
+        <div class="stat-card__num">3作品</div>
+        <div class="stat-card__lbl">劇場版</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--========== ORNAMENT ==========-->
+<div class="orn"></div>
+
+<!--========== TIMELINE ==========-->
+<section class="sec sec--lt" id="timeline">
+  <div class="sec__in">
+    <div class="maki reveal">
+      <div class="maki__roll maki__roll--gd"></div>
+      <div class="maki__body maki__body--lt">
+        <div class="maki__t maki__t--lt">黎明剣記年表</div>
+        <div class="maki__s maki__s--lt">TIMELINE</div>
+      </div>
+      <div class="maki__roll maki__roll--gd"></div>
+    </div>
+
+    <div class="timeline">
+      <!-- 2016 -->
+      <div class="tl-item tl-item--l reveal">
+        <div class="tl-item__content">
+          <span class="tl-item__tag tl-item__tag--manga">原作</span>
+          <div class="tl-item__year">2016</div>
+          <div class="tl-item__month">2月</div>
+          <div class="tl-item__desc">『月刊ファンタジア』創刊号にて連載開始。桐谷蒼真先生のデビュー連載作品として、大正時代を舞台にした和風ダークファンタジーが幕を開ける。</div>
+        </div>
+        <div class="tl-item__dot"></div>
+        <div style="width:calc(50% - 35px)"></div>
+      </div>
+
+      <!-- 2019 -->
+      <div class="tl-item tl-item--r reveal">
+        <div style="width:calc(50% - 35px)"></div>
+        <div class="tl-item__dot"></div>
+        <div class="tl-item__content">
+          <span class="tl-item__tag tl-item__tag--anime">アニメ</span>
+          <div class="tl-item__year">2019</div>
+          <div class="tl-item__month">4月</div>
+          <div class="tl-item__desc">TVアニメ「覚醒篇 ～始まりの剣～」放送開始。Studio Arcanaによる圧倒的な映像クオリティで社会現象に。オープニングテーマも大ヒットを記録。</div>
+        </div>
+      </div>
+
+      <!-- 2020 Movie -->
+      <div class="tl-item tl-item--l reveal">
+        <div class="tl-item__content">
+          <span class="tl-item__tag tl-item__tag--movie">劇場版</span>
+          <div class="tl-item__year">2020</div>
+          <div class="tl-item__month">5月</div>
+          <div class="tl-item__desc">原作漫画が『月刊ファンタジア』最終号にて最終回を迎える。全20巻で完結。</div>
+        </div>
+        <div class="tl-item__dot"></div>
+        <div style="width:calc(50% - 35px)"></div>
+      </div>
+
+      <!-- 2020 Movie Release -->
+      <div class="tl-item tl-item--r reveal">
+        <div style="width:calc(50% - 35px)"></div>
+        <div class="tl-item__dot"></div>
+        <div class="tl-item__content">
+          <span class="tl-item__tag tl-item__tag--movie">劇場版</span>
+          <div class="tl-item__year">2020</div>
+          <div class="tl-item__month">10月</div>
+          <div class="tl-item__desc">劇場版「黎明剣記」幽冥列車篇が公開。大ヒットを記録し、日本のアニメ映画史に名を刻む。</div>
+        </div>
+      </div>
+
+      <!-- 2021 -->
+      <div class="tl-item tl-item--l reveal">
+        <div class="tl-item__content">
+          <span class="tl-item__tag tl-item__tag--anime">アニメ</span>
+          <div class="tl-item__year">2021</div>
+          <div class="tl-item__month">10月</div>
+          <div class="tl-item__desc">TVアニメ「幽冥列車篇」「華街潜入篇」放送開始。剣聖・轟天馬の活躍を描く華街潜入篇は映像美の新境地を開く。</div>
+        </div>
+        <div class="tl-item__dot"></div>
+        <div style="width:calc(50% - 35px)"></div>
+      </div>
+
+      <!-- 2023 -->
+      <div class="tl-item tl-item--r reveal">
+        <div style="width:calc(50% - 35px)"></div>
+        <div class="tl-item__dot"></div>
+        <div class="tl-item__content">
+          <span class="tl-item__tag tl-item__tag--anime">アニメ</span>
+          <div class="tl-item__year">2023</div>
+          <div class="tl-item__month">4月</div>
+          <div class="tl-item__desc">TVアニメ「鍛冶の秘里篇」放送。剣聖・霧島零と剣聖・花宮雅の活躍、十二影将との激闘を描く。</div>
+        </div>
+      </div>
+
+      <!-- 2024 -->
+      <div class="tl-item tl-item--l reveal">
+        <div class="tl-item__content">
+          <span class="tl-item__tag tl-item__tag--anime">アニメ</span>
+          <div class="tl-item__year">2024</div>
+          <div class="tl-item__month">5月</div>
+          <div class="tl-item__desc">TVアニメ「剣聖修練篇」放送。最終決戦へ向けた剣聖たちの修行が描かれ、天穹城篇への期待が高まる。</div>
+        </div>
+        <div class="tl-item__dot"></div>
+        <div style="width:calc(50% - 35px)"></div>
+      </div>
+
+      <!-- 2025 -->
+      <div class="tl-item tl-item--r reveal">
+        <div style="width:calc(50% - 35px)"></div>
+        <div class="tl-item__dot"></div>
+        <div class="tl-item__content">
+          <span class="tl-item__tag tl-item__tag--movie">劇場版</span>
+          <div class="tl-item__year">2025</div>
+          <div class="tl-item__month">9月</div>
+          <div class="tl-item__desc">劇場版「黎明剣記」天穹城篇 三部作の第一章が公開。シリーズ最終章となる壮大な物語が劇場のスクリーンで幕を開ける。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--========== ORNAMENT ==========-->
+<div class="orn orn--sm"></div>
+
+<!--========== FOOTER ==========-->
+<footer class="ftr ftr--lt">
+  <div class="ftr__logos">
+    <div class="ftr__logo-i"><svg viewBox="0 0 100 28" height="28"><rect x="1" y="1" width="98" height="26" rx="3" fill="#fff" stroke="#333" stroke-width="1.5"/><text x="50" y="19" text-anchor="middle" font-family="'Noto Sans JP',sans-serif" font-size="11" font-weight="900" fill="#e53e3e">ファンタジア</text></svg></div>
+    <div class="ftr__div"></div>
+    <div class="ftr__logo-i"><svg viewBox="0 0 110 28" height="28"><text x="55" y="19" text-anchor="middle" font-family="'Noto Sans JP',sans-serif" font-size="13" font-weight="700" fill="#333" letter-spacing=".12em">LUMINAS</text></svg></div>
+    <div class="ftr__div"></div>
+    <div class="ftr__logo-i"><svg viewBox="0 0 120 28" height="28"><text x="60" y="19" text-anchor="middle" font-family="'Noto Sans JP',sans-serif" font-size="11" font-weight="700" fill="#333" letter-spacing=".08em">Studio Arcana</text></svg></div>
+  </div>
+  <div class="ftr__social">
+    <a href="#" class="ftr__sc"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="#" class="ftr__sc"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+    <a href="#" class="ftr__sc"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12z"/></svg></a>
+  </div>
+  <div class="ftr__top" onclick="scrollTo({top:0,behavior:'smooth'})">&#9650; ページ上部へ</div>
+  <div class="ftr__cr">このホームページに掲載されている一切の文書・図版・写真等を、手段や形態を問わず複製、転載することを禁じます。<br>&copy; 桐谷蒼真／星雲社・ルミナス・Studio Arcana</div>
+</footer>
+
+<!--========== JAVASCRIPT ==========-->
+<script>
+(function(){
+/* Loading Screen */
+window.addEventListener('load',function(){
+  setTimeout(function(){document.getElementById('loader').classList.add('hide')},800);
+});
+
+/* Header scroll effect */
+var hdr=document.getElementById('hdr');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>50){
+    hdr.classList.add('scrolled');
+  }else{
+    hdr.classList.remove('scrolled');
+  }
+},{passive:true});
+
+/* Scroll reveal */
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+
+/* Smooth nav scroll */
+document.querySelectorAll('.hdr__nav a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var h=a.getAttribute('href');
+    if(h&&h!=='#'){
+      e.preventDefault();
+      var t=document.querySelector(h);
+      if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  });
+});
+
+/* Parallax clouds */
+window.addEventListener('scroll',function(){
+  var y=window.scrollY;
+  document.querySelectorAll('.cloud-deco').forEach(function(c,i){
+    var speed=.02+i*.008;
+    c.style.transform='translateY('+y*speed+'px)';
+  });
+},{passive:true});
+
+/* Timeline counter animation */
+var statCards=document.querySelectorAll('.stat-card');
+var statsObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      statsObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+statCards.forEach(function(card){statsObserver.observe(card)});
+})();
+</script>
+</body>
+</html>
