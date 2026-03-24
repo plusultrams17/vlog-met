@@ -5,6 +5,16 @@
 
   /* ===== POSTS DATABASE (for related posts) ===== */
   var POSTS = [
+    { slug: '2026-04-04-shippai-kataru', title: '自分の失敗を人に語れるようになるまで、何年もかかった話', tags: ['thought'], date: '2026.04.04' },
+    { slug: '2026-04-03-title-60', title: 'ブログのタイトルを60個考えて満足して、本文を1本も書かなかった週末', tags: ['failure','thought'], date: '2026.04.03' },
+    { slug: '2026-04-02-ai-setsumei', title: 'AIに「すぐ終わるだろ」と思って聞いたら、説明だけで1時間かかった話', tags: ['failure','life'], date: '2026.04.02' },
+    { slug: '2026-04-01-stars-zero', title: '完璧なサイトを作ったのに、GitHub Stars 0、閲覧者 0人だった話', tags: ['failure','thought'], date: '2026.04.01' },
+    { slug: '2026-03-31-css-ikkou', title: 'CSSを1ファイルに全部書いたら、自分でも何がどこにあるかわからなくなった話', tags: ['failure','learning'], date: '2026.03.31' },
+    { slug: '2026-03-30-nihongo-filename', title: 'HTMLファイルを日本語ファイル名にしたら、地味に不具合が出続けた話', tags: ['failure','learning'], date: '2026.03.30' },
+    { slug: '2026-03-29-url-mienai', title: '自信満々で「このURL見て！」と送ったら、相手の画面に何も映らなかった話', tags: ['failure','learning'], date: '2026.03.29' },
+    { slug: '2026-03-28-coming-soon', title: '個人サイトのブログページだけ半年間「Coming Soon」だった話', tags: ['failure','thought'], date: '2026.03.28' },
+    { slug: '2026-03-27-note-vs-jisaku', title: 'noteか自作サイトか迷って3週間、結局どこにも公開しなかった話', tags: ['failure','thought'], date: '2026.03.27' },
+    { slug: '2026-03-26-blog-design', title: 'ブログを始めようとして、3時間デザインの話をして、1文字も書かなかった日', tags: ['failure','life'], date: '2026.03.26' },
     { slug: '2026-03-25-git-push', title: '納品前夜にgit pushしたら、本番環境が真っ白になった話', tags: ['failure','learning'], date: '2026.03.25' },
     { slug: '2026-03-23-baton', title: '体育祭のリレーでバトンを落として、拾おうとして転んで、バトンが風で転がっていった話', tags: ['failure'], date: '2026.03.23' },
     { slug: '2026-03-21-muryo-taiken', title: '「無料体験」を7つ同時に始めて、全部解約し忘れた月の請求額', tags: ['failure','learning'], date: '2026.03.21' },

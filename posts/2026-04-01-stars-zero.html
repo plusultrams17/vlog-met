@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>完璧なサイトを作ったのに、GitHub Stars 0、閲覧者 0人だった話 | 敗走録</title>
+<meta name="description" content="デザインにこだわった。アニメーションも入れた。でも、誰も見ていなかった。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&family=M+PLUS+1p:wght@300;400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+<div class="bg-shapes" aria-hidden="true"><div class="bg-shape bg-shape--1"></div><div class="bg-shape bg-shape--2"></div></div>
+<header class="site-header"><div class="site-header__inner">
+<a href="../index.html" class="site-header__logo"><img src="../favicon.png" alt="敗走録" class="logo-img"><span>敗走録</span></a>
+<nav class="site-header__nav"><a href="../index.html">トップ</a><a href="../archive.html">アーカイブ</a><a href="../about.html">このブログについて</a></nav>
+<div class="site-header__actions"><button class="theme-toggle" aria-label="テーマ切替">☀</button><button class="menu-btn" aria-label="メニュー"><span></span><span></span><span></span></button></div>
+</div></header>
+
+<main>
+  <div class="post-header-banner">
+    <div class="post-header-banner__visual post-header-banner__visual--thought">
+      <span class="post-header-banner__emoji">&#x2B50;</span>
+    </div>
+  </div>
+  <header class="post-header">
+    <h1 class="post-header__title">完璧なサイトを作ったのに、GitHub Stars 0、閲覧者 0人だった話</h1>
+    <div class="post-header__meta"><time class="post-header__date" datetime="2026-04-01">2026年4月1日</time></div>
+    <div class="post-header__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--thought">考え</span></div>
+    <div class="post-header__line"></div>
+  </header>
+
+  <article class="post-body">
+    <p>Vercelのアナリティクス画面を見て、3回リロードした。</p>
+
+    <p>Visitors: 0。Page Views: 0。Unique Visitors: 0。すべてがゼロ。デプロイしてから7日間。日本語で言うと「一週間」。168時間。10,080分。その間、このサイトを訪れた人間は、テスト表示した自分だけだった。</p>
+
+    <p>画面の向こうに、金色の雲がパララックスで流れている。蝶々が画面をふわりと横切る。スクロールすると、テキストがフェードインしてくる。装飾バーが記事の区切りをエレガントに彩っている。完璧なサイト。誰も見ていない完璧なサイト。</p>
+
+    <h2>こだわりの72時間</h2>
+
+    <p>3週間前に遡る。僕はポートフォリオサイトを作ると決意した。きっかけは、Twitterで見かけた美しいポートフォリオサイトだった。スクロールアニメーション、パーティクルエフェクト、3Dの回転するロゴ。「こういうの作りたい」。そう思った瞬間から、72時間の制作マラソンが始まった。</p>
+
+    <p>ヒーローセクションの背景は金色のグラデーションにした。<code>linear-gradient(135deg, #f6d365, #fda085)</code>。この色を決めるまでに4時間かかった。Coolorsで50パターン以上試した。最終的に「夕焼けの京都」をイメージした。京都に行ったことはないけど。</p>
+
+    <p>パララックスの雲はSVGで自作した。Figmaで雲の形を7パターン描いて、それぞれにアニメーション速度を変えて配置した。雲の透明度は0.3にした。0.2だと存在感がなく、0.4だとテキストの可読性が落ちる。その0.1の差に1時間悩んだ。</p>
+
+    <p>蝶々のアニメーションは、CSSの<code>@keyframes</code>で実装した。ベジェ曲線を使って、本物の蝶のように不規則な軌道を描かせた。YouTubeでモンシロチョウの飛行パターンを30分観察して、そのカーブを再現した。エンジニアリングというより、もはや昆虫学だった。</p>
+
+    <h2>デプロイの高揚感</h2>
+
+    <p>完成したのは日曜日の夜だった。全ページの表示確認を3回やった。Chrome、Firefox、Safari。iPhone SE、iPhone 14 Pro Max、iPad、Galaxy S23。すべてのデバイスで完璧に表示される。Lighthouseのスコアはパフォーマンス98、アクセシビリティ100、SEO 100。</p>
+
+    <p>GitHubにリポジトリを作った。READMEには丁寧にスクリーンショットを貼った。技術スタックを箇条書きにした。デモサイトのURLも記載した。Vercelに連携して、ワンクリックでデプロイ。</p>
+
+    <p>公開ボタンを押した瞬間、心臓が高鳴った。世界に公開された。僕の作品が、インターネットの大海原に放たれた。あとは待つだけだ。きっと誰かが見つけてくれる。スターがつく。フォークされる。もしかしたら、Hacker Newsに載るかもしれない。</p>
+
+    <p>その夜、布団の中で30分おきにGitHubを確認した。</p>
+
+    <h2>7日間のゼロ</h2>
+
+    <p>1日目。Stars: 0。「まだ1日だし」と思った。</p>
+
+    <p>2日目。Stars: 0。「まあ、そんなもんか」。</p>
+
+    <p>3日目。Stars: 0。少し不安になった。Vercelのアナリティクスを確認した。Visitors: 1。自分だった。</p>
+
+    <p>4日目。Stars: 0、Forks: 0、Visitors: 0。「何かがおかしい」。GitHubの検索で自分のリポジトリ名を入力してみた。出てくる。確かにパブリックリポジトリとして存在している。でも、世界の誰もそれを検索していなかった。</p>
+
+    <p>5日目。同僚の山田に聞いてみた。</p>
+
+    <p>「新しいサイト作ったんだけど、見た？」</p>
+
+    <p>「え、何それ。知らないけど」</p>
+
+    <p>「GitHubにあげたんだけど」</p>
+
+    <p>「......教えてくれなきゃ見ないよ」</p>
+
+    <p>その一言で、すべてがわかった。</p>
+
+    <h2>灯台と船の話</h2>
+
+    <p>僕は灯台を建てたつもりだった。美しく、堅牢で、夜の海を照らす灯台。でも、明かりを灯していなかった。灯台守が不在の灯台は、ただの塔だ。岬に立つコンクリートの柱に、船は寄ってこない。</p>
+
+    <p>インターネットには、17億以上のウェブサイトがある。GitHubには1億以上のリポジトリがある。その中で、名もないエンジニアが作ったポートフォリオサイトが「自然に」発見される確率は、限りなくゼロに近い。</p>
+
+    <p>自分がやらなかったことをリストアップした。SNSでの告知：0回。友人への連絡：0人。Qiitaやzennでの技術記事：0本。Redditへの投稿：0件。会社のSlackでの共有：0回。どこにも、一言も、告知していなかった。</p>
+
+    <p>「良いものは勝手に広まる」。僕はこの幻想を信じていた。テレビもない、SNSもない時代なら、口コミだけで広まることもあっただろう。でも2026年のインターネットでは、良いものは広まらない。「良いものを、届けた」ものだけが広まる。</p>
+
+    <h2>「届ける」という別の技術</h2>
+
+    <p>先輩エンジニアの中村さんにこの話をしたら、コーヒーを飲みながら笑われた。</p>
+
+    <p>「俺も最初そうだったよ。3ヶ月かけてOSSライブラリ作って、誰にも言わなくて、ダウンロード数0だった」</p>
+
+    <p>「どうやって解決したんですか？」</p>
+
+    <p>「作る時間の3割を、届ける時間にあてるようにした。記事を書く、デモを録画する、勉強会で発表する。作るスキルと届けるスキルは、完全に別物なんだよ」</p>
+
+    <p>中村さんの言葉が刺さった。僕はパララックスの雲の透明度0.1の差に1時間悩んだ。でも「どうやって人に見てもらうか」には1秒も使わなかった。蝶の飛行パターンは30分研究した。でもTwitterの1ツイートすら書かなかった。</p>
+
+    <p>完璧さを追求するのは楽しい。でも、閉じた完璧は存在しないのと同じだ。誰にも見られない美術館に飾られた絵画は、描かれなかった絵と何が違うのだろう。</p>
+
+    <h2>ゼロからの再出発</h2>
+
+    <p>翌日、僕はまずTwitterにサイトのスクリーンショットを投稿した。たった140文字の紹介文を添えて。いいねが3個ついた。たった3個。でも、0と3の間には、宇宙ほどの差がある。</p>
+
+    <p>会社のSlackの雑談チャンネルにもURLを貼った。「ポートフォリオ作りました。フィードバックください」。5人がリアクションをくれた。1人がDMで「カラーパレットいいね」と言ってくれた。蝶のアニメーションには誰も触れなかった。あの30分のモンシロチョウ研究は何だったのか。</p>
+
+    <p>1ヶ月後、GitHubのスターは12個になった。12個。世界を変える数字ではない。でも、0ではない。12人が、わざわざスターボタンを押してくれた。そのうち8人は知人だった。残りの4人は、見知らぬ誰かだった。見知らぬ誰かが、僕のサイトを見て、何かを感じて、星を押してくれた。</p>
+
+    <blockquote>
+      <p>閉じた完璧より、開いた未完成のほうが価値がある。作ったら、届けろ。Twitterに1ツイート、Slackに1メッセージ、友人に1通のLINE。それだけで、0は0じゃなくなる。灯台の明かりを灯すのは、建てることよりずっと簡単だ。でも、灯さなければ、船は永遠に来ない。</p>
+    </blockquote>
+  </article>
+
+  <nav class="post-nav">
+    <a href="2026-04-02-ai-setsumei.html" class="post-nav__prev">&larr; 前の記事</a>
+    <a href="../archive.html" class="post-nav__archive">アーカイブ</a>
+    <a href="2026-03-31-css-ikkou.html" class="post-nav__next">次の記事 &rarr;</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="site-footer__brand">敗走録</div>
+<nav class="site-footer__links"><a href="../index.html">トップ</a><span class="site-footer__dot">&middot;</span><a href="../archive.html">アーカイブ</a><span class="site-footer__dot">&middot;</span><a href="../about.html">このブログについて</a></nav>
+<p class="site-footer__copy">&copy; 2026 敗走録</p></footer>
+<script src="../main.js"></script>
+</body>
+</html>

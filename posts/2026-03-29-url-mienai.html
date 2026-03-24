@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>自信満々で『このURL見て！』と送ったら、相手の画面に何も映らなかった話 | 敗走録</title>
+<meta name="description" content="Vercelにデプロイした。自分のPCでは完璧に動く。「見れないんだけど」。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&family=M+PLUS+1p:wght@300;400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+<div class="bg-shapes" aria-hidden="true"><div class="bg-shape bg-shape--1"></div><div class="bg-shape bg-shape--2"></div></div>
+<header class="site-header"><div class="site-header__inner">
+<a href="../index.html" class="site-header__logo"><img src="../favicon.png" alt="敗走録" class="logo-img"><span>敗走録</span></a>
+<nav class="site-header__nav"><a href="../index.html">トップ</a><a href="../archive.html">アーカイブ</a><a href="../about.html">このブログについて</a></nav>
+<div class="site-header__actions"><button class="theme-toggle" aria-label="テーマ切替">☀</button><button class="menu-btn" aria-label="メニュー"><span></span><span></span><span></span></button></div>
+</div></header>
+
+<main>
+  <div class="post-header-banner">
+    <div class="post-header-banner__visual post-header-banner__visual--learning">
+      <span class="post-header-banner__emoji">&#x1F517;</span>
+    </div>
+  </div>
+  <header class="post-header">
+    <h1 class="post-header__title">自信満々で『このURL見て！』と送ったら、相手の画面に何も映らなかった話</h1>
+    <div class="post-header__meta"><time class="post-header__date" datetime="2026-03-29">2026年3月29日</time></div>
+    <div class="post-header__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--learning">学び</span></div>
+    <div class="post-header__line"></div>
+  </header>
+
+  <article class="post-body">
+    <p>LINEの通知音が鳴った。スマホを見た。友人の高橋からのメッセージ。</p>
+
+    <p>「見れないんだけど」</p>
+
+    <p>添付されていたのは、スクリーンショット。真っ白な画面。ブラウザのアドレスバーにはさっき僕が送ったURL。そして、何も表示されていない白い空間。僕が72時間かけて作ったポートフォリオサイトがあるはずの場所に、何もなかった。</p>
+
+    <p>「え？」と声に出した。自分のパソコンでURLを開いた。完璧に表示されている。ヒーローセクション、アニメーション、プロジェクト一覧、全部動いている。何の問題もない。</p>
+
+    <p>「こっちでは普通に見れてるけど」と返信した。</p>
+
+    <p>「いや、こっちは真っ白だよ」</p>
+
+    <p>この会話が、あの日の始まりだった。</p>
+
+    <h2>Vercelデプロイ成功の興奮</h2>
+
+    <p>3日前に遡る。僕は初めてVercelにサイトをデプロイした。GitHubのリポジトリを接続して、ボタンを2回クリックしたら、30秒でデプロイが完了した。ターミナルに表示された緑色の「Ready」の文字。自動生成されたURL。xxxxx.vercel.app。</p>
+
+    <p>クリックした。自分のサイトが、インターネット上に存在していた。localhost:3000じゃない。本物のURLだ。世界中の誰でもアクセスできるURLだ。この興奮は、初めてHTMLでHello Worldを表示したときと同じくらい大きかった。</p>
+
+    <p>何度もリロードした。別のブラウザで開いた。Chromeで確認。Edgeで確認。スマホのSafariで確認。全部完璧。レスポンシブも効いている。フォントも正しく読み込まれている。OGP画像も設定した。Twitterカードのプレビューも確認した。完璧だ。</p>
+
+    <p>この喜びを誰かに伝えたかった。LINEを開いて、5人の友人にURLを送った。「ポートフォリオサイト作ったから見て！」。ビックリマークを3つ付けた。自信に満ちていた。</p>
+
+    <h2>「見れない」の衝撃</h2>
+
+    <p>最初に返信が来たのは高橋だった。「見れないんだけど」。次に山田。「なんか表示されない」。そして鈴木。「このサイトにアクセスできませんって出る」。</p>
+
+    <p>5人中3人が見れないと言っている。残りの2人はまだ返信がない（後で聞いたら、1人は見れて、1人はやはり見れなかった）。</p>
+
+    <p>パニックになった。デプロイが壊れたのか。Vercelのダッシュボードを開いた。ステータスはグリーン。正常稼働中。ビルドログも確認した。エラーなし。自分のパソコンで再度アクセスした。完璧に表示されている。</p>
+
+    <p>「どのブラウザ使ってる？」と高橋に聞いた。</p>
+
+    <p>「Chrome。会社のパソコンから見てる」</p>
+
+    <p>「会社の？」</p>
+
+    <p>そこで、嫌な予感がした。</p>
+
+    <h2>見えない壁の正体</h2>
+
+    <p>高橋は会社の昼休みにURLを開いていた。企業のネットワーク。ファイアウォール。プロキシ。その向こう側に、.vercel.appドメインは存在していなかった。</p>
+
+    <p>調べてみると、.vercel.appのような無料サブドメインは、多くの企業や学校のネットワークでブロックされていた。セキュリティポリシーとして、無料ホスティングサービスのドメインを一括でブロックしている組織は少なくない。フィッシングサイトやマルウェア配布に使われるケースがあるからだ。</p>
+
+    <p>山田は大学のWi-Fiから見ていた。同じ理由でブロック。鈴木は会社のVPN経由。これもブロック。</p>
+
+    <p>つまり、僕のサイトは存在していた。インターネット上に確かに存在していた。でも、「特定のネットワークからは見えない壁」の向こう側にあった。サイトの問題じゃない。URL自体が信用されていなかった。</p>
+
+    <p>これは、以前にlocalhostのURLを送って「見れない」と言われた事件の続編だった。あのときは「localhost」という概念を理解していなかった。今回は「デプロイ」は理解した。でも「アクセシビリティ」の別の側面を理解していなかった。壁は乗り越えても、次の壁が出てくる。形を変えて。</p>
+
+    <h2>「自分の画面で動いてる」の罠</h2>
+
+    <p>冷静になって考えた。僕は自分のパソコンの、自宅のWi-Fiからしかテストしていなかった。ChromeとEdgeとスマホのSafariで確認した。3つのブラウザで確認した。でも、全部同じネットワークからだった。</p>
+
+    <p>「自分の画面で動いている」は、「すべての人の画面で動いている」とイコールじゃない。当たり前のことだ。でも、初めてのデプロイの興奮の中で、その当たり前を忘れていた。</p>
+
+    <p>localhost事件のとき、先輩の山本さんに言われた言葉を思い出した。「自分の環境でしか動かないものは、動いていないのと同じだ」。あのときは「localhostは自分の環境でしか動かない」という意味だと思っていた。でも本当は、もっと広い意味だった。デプロイしたって、相手の環境で動かなければ意味がない。</p>
+
+    <p>母親にURLを送ってみた。「これ見れる？」</p>
+
+    <p>「見れるよ。何これ、あんたが作ったの？ すごいじゃない」</p>
+
+    <p>嬉しかった。でも母親は自宅のWi-Fiから見ている。同じネットワークだ。テストとしては意味がない。嬉しいけど。</p>
+
+    <h2>独自ドメインという解決策</h2>
+
+    <p>その夜、2時間かけて対策を調べた。結論はシンプルだった。独自ドメインを取得する。.vercel.appのサブドメインではなく、自分だけの.comや.devのドメイン。独自ドメインならブロックされる可能性は大幅に下がる。</p>
+
+    <p>Google Domainsで.devドメインを探した。年間1,400円。自分の名前のローマ字で取得できた。Vercelの設定画面でカスタムドメインを追加して、DNSのAレコードを設定して、SSL証明書が自動発行されるのを待った。15分で完了した。</p>
+
+    <p>新しいURLを高橋に送った。「これで見れる？」</p>
+
+    <p>「おお、見れた！ いいじゃん」</p>
+
+    <p>やっと伝わった。72時間かけて作ったサイトが、やっと人の目に届いた。嬉しさと同時に、もっと早くやるべきだったという後悔。1,400円をケチったわけじゃない。「独自ドメインが必要だ」という発想自体がなかったのだ。</p>
+
+    <p>山田にも送った。「見れた。てか前のURLなんだったの」と言われた。説明するのが面倒だったので「ちょっとした設定ミス」と答えた。設定ミスじゃなくて認識ミスだったけど。</p>
+
+    <h2>3つの環境で確認する</h2>
+
+    <p>この経験から、僕は「3つの環境テスト」を自分ルールにした。1つ目、自宅のWi-Fiから。2つ目、スマホの4G/5G回線から。3つ目、できれば誰かの別のネットワークから。この3つで表示確認できれば、だいたい大丈夫だ。</p>
+
+    <p>localhost事件では「自分のPCでしか見れないURL」を送った。今回は「特定のネットワークからしか見れないURL」を送った。どちらも根っこは同じだ。「自分の画面で動いている」を過信した。</p>
+
+    <p>壁は乗り越えるたびに、種類が変わる。でも、壁が変わるということは、前に進んでいるということでもある。localhostの壁は超えた。ネットワークの壁も超えた。次はどんな壁が来るのだろう。たぶんまた恥ずかしい壁だろう。でも、もう慣れてきた。恥ずかしさには。</p>
+
+    <p>高橋が追加でメッセージをくれた。「サイトのデザインいいね。ちなみにスマホで見たらフッターの文字が切れてるよ」</p>
+
+    <p>また壁だ。でもこの壁はCSSで直せる。5分で直した。壁が小さくなっている。成長かもしれない。</p>
+
+    <blockquote>
+      <p>「自分の画面で動いてるから大丈夫」は二度と言わない。</p>
+    </blockquote>
+  </article>
+
+  <nav class="post-nav">
+    <a href="2026-03-30-nihongo-filename.html" class="post-nav__prev">&larr; 前の記事</a>
+    <a href="../archive.html" class="post-nav__archive">アーカイブ</a>
+    <a href="2026-03-28-coming-soon.html" class="post-nav__next">次の記事 &rarr;</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="site-footer__brand">敗走録</div>
+<nav class="site-footer__links"><a href="../index.html">トップ</a><span class="site-footer__dot">&middot;</span><a href="../archive.html">アーカイブ</a><span class="site-footer__dot">&middot;</span><a href="../about.html">このブログについて</a></nav>
+<p class="site-footer__copy">&copy; 2026 敗走録</p></footer>
+<script src="../main.js"></script>
+</body>
+</html>
