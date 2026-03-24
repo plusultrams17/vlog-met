@@ -217,12 +217,187 @@
     postNav.insertAdjacentHTML('beforebegin', html);
   }
 
+  // ===== Table of Contents =====
+  function initTOC() {
+    var body = document.querySelector('.post-body');
+    if (!body) return;
+    var headings = body.querySelectorAll('h2');
+    if (headings.length < 2) return;
+
+    headings.forEach(function (h, i) { if (!h.id) h.id = 'section-' + (i + 1); });
+
+    var html = '<nav class="toc" aria-label="\u76EE\u6B21">';
+    html += '<button class="toc__toggle" aria-expanded="true"><span class="toc__icon">\uD83D\uDCD1</span> \u76EE\u6B21 <span class="toc__count">' + headings.length + '</span><span class="toc__arrow">\u25BE</span></button>';
+    html += '<ol class="toc__list">';
+    headings.forEach(function (h) {
+      html += '<li class="toc__item"><a href="#' + h.id + '" class="toc__link">' + h.textContent.replace(/#$/, '') + '</a></li>';
+    });
+    html += '</ol></nav>';
+
+    var postHeader = document.querySelector('.post-header');
+    if (postHeader) postHeader.insertAdjacentHTML('afterend', html);
+
+    var toggle = document.querySelector('.toc__toggle');
+    var list = document.querySelector('.toc__list');
+    if (toggle && list) {
+      toggle.addEventListener('click', function () {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        list.classList.toggle('collapsed');
+        toggle.querySelector('.toc__arrow').textContent = expanded ? '\u25B8' : '\u25BE';
+      });
+    }
+
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            document.querySelectorAll('.toc__link').forEach(function (l) { l.classList.remove('active'); });
+            var a = document.querySelector('.toc__link[href="#' + entry.target.id + '"]');
+            if (a) a.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-80px 0px -80% 0px' });
+      headings.forEach(function (h) { obs.observe(h); });
+    }
+  }
+
+  // ===== Summary / Key Takeaway Box =====
+  function initSummaryBox() {
+    var body = document.querySelector('.post-body');
+    if (!body) return;
+    var bq = body.querySelector('blockquote');
+    if (!bq) return;
+    var text = bq.textContent.trim();
+    if (!text) return;
+
+    var html = '<div class="summary-box">';
+    html += '<div class="summary-box__header"><span class="summary-box__icon">\uD83D\uDCA1</span> \u3053\u306E\u8A18\u4E8B\u306E\u30DD\u30A4\u30F3\u30C8</div>';
+    html += '<p class="summary-box__text">' + text + '</p>';
+    html += '</div>';
+    body.insertAdjacentHTML('afterbegin', html);
+  }
+
+  // ===== Share Buttons =====
+  function initShareButtons() {
+    var postNav = document.querySelector('.post-nav');
+    if (!postNav) return;
+    var title = document.title;
+    var url = window.location.href;
+
+    var html = '<div class="share-buttons">';
+    html += '<span class="share-buttons__label">\u3053\u306E\u8A18\u4E8B\u3092\u30B7\u30A7\u30A2</span>';
+    html += '<div class="share-buttons__group">';
+    html += '<a href="https://twitter.com/intent/tweet?text=' + encodeURIComponent(title) + '&url=' + encodeURIComponent(url) + '" target="_blank" rel="noopener" class="share-btn share-btn--x" aria-label="X\u3067\u30B7\u30A7\u30A2">\uD835\uDD4F</a>';
+    html += '<a href="https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent(url) + '" target="_blank" rel="noopener" class="share-btn share-btn--line" aria-label="LINE\u3067\u30B7\u30A7\u30A2">LINE</a>';
+    html += '<button class="share-btn share-btn--copy" aria-label="\u30EA\u30F3\u30AF\u3092\u30B3\u30D4\u30FC">\uD83D\uDD17 \u30B3\u30D4\u30FC</button>';
+    html += '</div></div>';
+
+    var related = document.querySelector('.related-posts');
+    (related || postNav).insertAdjacentHTML('beforebegin', html);
+
+    var copyBtn = document.querySelector('.share-btn--copy');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function () {
+        navigator.clipboard.writeText(url).then(function () {
+          copyBtn.textContent = '\u2713 \u30B3\u30D4\u30FC\u3057\u307E\u3057\u305F';
+          setTimeout(function () { copyBtn.textContent = '\uD83D\uDD17 \u30B3\u30D4\u30FC'; }, 2000);
+        });
+      });
+    }
+  }
+
+  // ===== Reaction Buttons =====
+  function initReactions() {
+    var postBody = document.querySelector('.post-body');
+    if (!postBody) return;
+    var slug = window.location.pathname.replace(/.*\//, '').replace('.html', '');
+    var storageKey = 'haisouroku-react-' + slug;
+    var saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+
+    var reactions = [
+      { key: 'empathy', emoji: '\uD83D\uDE22', label: '\u5171\u611F\u3057\u305F' },
+      { key: 'learned', emoji: '\uD83D\uDCDD', label: '\u5B66\u3073\u306B\u306A\u3063\u305F' },
+      { key: 'laughed', emoji: '\uD83D\uDE02', label: '\u7B11\u3063\u305F' }
+    ];
+
+    var html = '<div class="reactions">';
+    html += '<span class="reactions__label">\u3053\u306E\u8A18\u4E8B\u3069\u3046\u3060\u3063\u305F\uFF1F</span>';
+    html += '<div class="reactions__group">';
+    reactions.forEach(function (r) {
+      var active = saved[r.key] ? ' active' : '';
+      html += '<button class="reaction-btn' + active + '" data-key="' + r.key + '">';
+      html += '<span class="reaction-btn__emoji">' + r.emoji + '</span>';
+      html += '<span class="reaction-btn__label">' + r.label + '</span></button>';
+    });
+    html += '</div></div>';
+    postBody.insertAdjacentHTML('afterend', html);
+
+    document.querySelectorAll('.reaction-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var key = btn.getAttribute('data-key');
+        saved[key] = !saved[key];
+        localStorage.setItem(storageKey, JSON.stringify(saved));
+        btn.classList.toggle('active');
+        btn.style.transform = 'scale(1.15)';
+        setTimeout(function () { btn.style.transform = ''; }, 200);
+      });
+    });
+  }
+
+  // ===== Author Card =====
+  function initAuthorCard() {
+    var postNav = document.querySelector('.post-nav');
+    if (!postNav) return;
+    var html = '<div class="author-card">';
+    html += '<div class="author-card__avatar">\u6557</div>';
+    html += '<div class="author-card__info">';
+    html += '<span class="author-card__name">\u6557\u8D70\u9332\u306E\u4E2D\u306E\u4EBA</span>';
+    html += '<p class="author-card__bio">\u5931\u6557\u3092\u8A18\u9332\u3057\u3001\u540C\u3058\u8F4D\u3092\u8E0F\u307E\u306A\u3044\u305F\u3081\u306B\u66F8\u3044\u3066\u3044\u307E\u3059\u3002\u8EE2\u3093\u3060\u6570\u3060\u3051\u3001\u5F37\u304F\u306A\u308C\u308B\u3068\u4FE1\u3058\u3066\u3002</p>';
+    html += '</div></div>';
+    postNav.insertAdjacentHTML('beforebegin', html);
+  }
+
+  // ===== Breadcrumbs =====
+  function initBreadcrumbs() {
+    var banner = document.querySelector('.post-header-banner');
+    if (!banner || !document.querySelector('.post-body')) return;
+    var html = '<nav class="breadcrumbs" aria-label="\u30D1\u30F3\u304F\u305A\u30EA\u30B9\u30C8">';
+    html += '<a href="../index.html">\u30C8\u30C3\u30D7</a>';
+    html += '<span class="breadcrumbs__sep">\u203A</span>';
+    html += '<a href="../archive.html">\u30A2\u30FC\u30AB\u30A4\u30D6</a>';
+    html += '<span class="breadcrumbs__sep">\u203A</span>';
+    html += '<span class="breadcrumbs__current">\u3053\u306E\u8A18\u4E8B</span></nav>';
+    banner.insertAdjacentHTML('beforebegin', html);
+  }
+
+  // ===== Heading Anchor Links =====
+  function initHeadingAnchors() {
+    var headings = document.querySelectorAll('.post-body h2, .post-body h3');
+    headings.forEach(function (h, i) {
+      if (!h.id) h.id = 'section-' + (i + 1);
+      var a = document.createElement('a');
+      a.className = 'heading-anchor';
+      a.href = '#' + h.id;
+      a.textContent = '#';
+      a.setAttribute('aria-label', '\u30BB\u30AF\u30B7\u30E7\u30F3\u30EA\u30F3\u30AF');
+      h.appendChild(a);
+    });
+  }
+
   // ===== INIT =====
   document.addEventListener('DOMContentLoaded', function () {
     initProgressBar();
     initReadingTime();
     initScrollToTop();
     initScrollAnimations();
+    initBreadcrumbs();
+    initSummaryBox();
+    initTOC();
+    initHeadingAnchors();
+    initReactions();
+    initShareButtons();
+    initAuthorCard();
     initRelatedPosts();
   });
 })();
