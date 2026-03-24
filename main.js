@@ -5,6 +5,11 @@
 
   /* ===== POSTS DATABASE (for related posts) ===== */
   var POSTS = [
+    { slug: '2026-03-25-git-push', title: '納品前夜にgit pushしたら、本番環境が真っ白になった話', tags: ['failure','learning'], date: '2026.03.25' },
+    { slug: '2026-03-23-baton', title: '体育祭のリレーでバトンを落として、拾おうとして転んで、バトンが風で転がっていった話', tags: ['failure'], date: '2026.03.23' },
+    { slug: '2026-03-21-muryo-taiken', title: '「無料体験」を7つ同時に始めて、全部解約し忘れた月の請求額', tags: ['failure','learning'], date: '2026.03.21' },
+    { slug: '2026-03-19-line-group', title: 'LINEグループを間違えて、仕事の愚痴を家族グループに送った結果', tags: ['failure','life'], date: '2026.03.19' },
+    { slug: '2026-03-17-localhost', title: '徹夜で作ったポートフォリオサイトを面接官に開いたら、localhost:3000だった話', tags: ['failure','learning'], date: '2026.03.17' },
     { slug: '2026-03-24-jikoshoukai', title: '初日の自己紹介で名前を噛んで、そのあだ名が3年続いた', tags: ['failure','life'], date: '2026.03.24' },
     { slug: '2026-03-22-gijiroku', title: '議事録を全社に送ったつもりが、愚痴メモを全社に送っていた', tags: ['failure'], date: '2026.03.22' },
     { slug: '2026-03-20-joushi-namae', title: '上司の名前を半年間ずっと間違えて呼んでいた', tags: ['failure'], date: '2026.03.20' },

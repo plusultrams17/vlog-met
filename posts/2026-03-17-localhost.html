@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>徹夜で作ったポートフォリオサイトを面接官に開いたら、localhost:3000だった話 | 敗走録</title>
+<meta name="description" content="「ぜひ見せてください」と言われてノートPCを開いた。サーバーは自宅のデスクトップの中で眠っていた。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&family=M+PLUS+1p:wght@300;400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+<div class="bg-shapes" aria-hidden="true"><div class="bg-shape bg-shape--1"></div><div class="bg-shape bg-shape--2"></div></div>
+<header class="site-header"><div class="site-header__inner">
+<a href="../index.html" class="site-header__logo"><span class="logo-mark">敗</span><span>敗走録</span></a>
+<nav class="site-header__nav"><a href="../index.html">トップ</a><a href="../archive.html">アーカイブ</a><a href="../about.html">このブログについて</a></nav>
+<div class="site-header__actions"><button class="theme-toggle" aria-label="テーマ切替">☀</button><button class="menu-btn" aria-label="メニュー"><span></span><span></span><span></span></button></div>
+</div></header>
+
+<main>
+  <div class="post-header-banner">
+    <div class="post-header-banner__visual post-header-banner__visual--failure">
+      <span class="post-header-banner__emoji">&#x1F4BB;</span>
+    </div>
+  </div>
+  <header class="post-header">
+    <h1 class="post-header__title">徹夜で作ったポートフォリオサイトを面接官に開いたら、localhost:3000だった話</h1>
+    <div class="post-header__meta"><time class="post-header__date" datetime="2026-03-17">2026年3月17日</time></div>
+    <div class="post-header__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--learning">学び</span></div>
+    <div class="post-header__line"></div>
+  </header>
+
+  <article class="post-body">
+    <p>転職活動中の話だ。</p>
+
+    <p>面接対策として、ポートフォリオサイトを作った。我ながら良い出来だった。デザインにこだわり、アニメーションも入れ、レスポンシブ対応も完璧。3日間ほぼ徹夜で仕上げた。</p>
+
+    <p>問題は、デプロイしていなかったことだ。</p>
+
+    <h2>localhost:3000</h2>
+
+    <p>面接当日。面接官に「作品はありますか？」と聞かれた。待ってましたとばかりにノートPCを開いた。ブックマークバーから自信満々にクリック。</p>
+
+    <p>localhost:3000。</p>
+
+    <p>画面は真っ白だった。当然だ。開発サーバーは自宅のデスクトップで動いている。このノートPCには何もない。</p>
+
+    <p>「少々お待ちください」と言いながら、頭の中でフル回転した。GitHubにコードは上げてある。Vercelのアカウントもある。今からデプロイすれば──いや、面接中にターミナルを開くわけにはいかない。</p>
+
+    <p>「すみません、デプロイ前の状態でして…」</p>
+
+    <p>面接官は黙った。エンジニアの面接で「デプロイしていない」は致命的だ。</p>
+
+    <h2>作って終わりじゃない</h2>
+
+    <p>コードが書けることと、サービスを届けられることは全然別の能力だ。それを証明する場で、まさにそれが証明されてしまった。</p>
+
+    <p>結果は不採用だった。</p>
+
+    <p>帰り道、駅のホームでVercelにデプロイした。3分で終わった。たった3分。その3分を面接前にやらなかった自分が、情けなかった。</p>
+
+    <blockquote>
+      <p>「作って終わり」じゃない。「届けて終わり」だ。今は何かを作ったら、完成の定義を「デプロイしてURLをスマホで開けた瞬間」にしている。ローカルで動くだけでは完成じゃない。</p>
+    </blockquote>
+  </article>
+
+  <nav class="post-nav">
+    <a href="2026-03-18-yuukyuu.html" class="post-nav__prev">&larr; 前の記事</a>
+    <a href="../archive.html" class="post-nav__archive">アーカイブ</a>
+    <a href="2026-03-16-presentation.html" class="post-nav__next">次の記事 &rarr;</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="site-footer__brand">敗走録</div>
+<nav class="site-footer__links"><a href="../index.html">トップ</a><span class="site-footer__dot">&middot;</span><a href="../archive.html">アーカイブ</a><span class="site-footer__dot">&middot;</span><a href="../about.html">このブログについて</a></nav>
+<p class="site-footer__copy">&copy; 2026 敗走録</p></footer>
+<script src="../main.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>納品前夜にgit pushしたら、本番環境が真っ白になった話 | 敗走録</title>
+<meta name="description" content="深夜2時。「あとはpushするだけ」。その一言が、翌朝のクライアントの怒号に変わった。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&family=M+PLUS+1p:wght@300;400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+<div class="bg-shapes" aria-hidden="true"><div class="bg-shape bg-shape--1"></div><div class="bg-shape bg-shape--2"></div></div>
+<header class="site-header"><div class="site-header__inner">
+<a href="../index.html" class="site-header__logo"><span class="logo-mark">敗</span><span>敗走録</span></a>
+<nav class="site-header__nav"><a href="../index.html">トップ</a><a href="../archive.html">アーカイブ</a><a href="../about.html">このブログについて</a></nav>
+<div class="site-header__actions"><button class="theme-toggle" aria-label="テーマ切替">☀</button><button class="menu-btn" aria-label="メニュー"><span></span><span></span><span></span></button></div>
+</div></header>
+
+<main>
+  <div class="post-header-banner">
+    <div class="post-header-banner__visual post-header-banner__visual--failure">
+      <span class="post-header-banner__emoji">&#x1F5A5;</span>
+    </div>
+  </div>
+  <header class="post-header">
+    <h1 class="post-header__title">納品前夜にgit pushしたら、本番環境が真っ白になった話</h1>
+    <div class="post-header__meta"><time class="post-header__date" datetime="2026-03-25">2026年3月25日</time></div>
+    <div class="post-header__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--learning">学び</span></div>
+    <div class="post-header__line"></div>
+  </header>
+
+  <article class="post-body">
+    <p>深夜2時。オフィスには自分だけだった。コーヒーの3杯目が冷めかけている。明日の納品に向けた最終確認。コードは完璧。テストも通った。「あとはpushするだけ」。</p>
+
+    <p>軽い気持ちでgit push origin mainを叩いた。</p>
+
+    <h2>真っ白な画面</h2>
+
+    <p>ターミナルの表示を見た瞬間、血の気が引いた。ブランチを間違えていた。開発途中の、テストすら通っていないコードを本番ブランチに直接pushしていた。しかもCI/CDが動いている。自動デプロイ。</p>
+
+    <p>慌ててブラウザを開く。クライアントのサイト。真っ白。何も表示されない。404でもない。ただの、白。</p>
+
+    <p>revertしようとした。手が震えていた。コマンドを3回打ち間違えた。普段なら10秒で終わる作業に5分かかった。やっとrevertが通って、サイトが戻った。深夜2時28分。</p>
+
+    <h2>翌朝の電話</h2>
+
+    <p>翌朝、クライアントから電話が来た。「昨夜、サイトが見れなかったんだけど」。深夜にアクセスする人がいるとは思っていなかった。甘かった。</p>
+
+    <p>上司に報告した。怒られるかと思ったら、「で、再発防止策は？」とだけ聞かれた。怒鳴られるより堪えた。</p>
+
+    <p>その日のうちにブランチ保護ルールを設定した。mainへの直接pushを禁止。PRのレビュー必須。本来なら最初からやるべきことだった。</p>
+
+    <p>「あとはpushするだけ」。この言葉を聞くたびに、今でもあの白い画面がフラッシュバックする。</p>
+
+    <blockquote>
+      <p>今は深夜のデプロイを禁止している。疲れた脳で触っていいのは個人プロジェクトだけ。本番環境は朝の、コーヒーの1杯目が温かいうちに。</p>
+    </blockquote>
+  </article>
+
+  <nav class="post-nav">
+    <a href="../archive.html" class="post-nav__archive">アーカイブ</a>
+    <a href="2026-03-24-jikoshoukai.html" class="post-nav__next">次の記事 &rarr;</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="site-footer__brand">敗走録</div>
+<nav class="site-footer__links"><a href="../index.html">トップ</a><span class="site-footer__dot">&middot;</span><a href="../archive.html">アーカイブ</a><span class="site-footer__dot">&middot;</span><a href="../about.html">このブログについて</a></nav>
+<p class="site-footer__copy">&copy; 2026 敗走録</p></footer>
+<script src="../main.js"></script>
+</body>
+</html>
