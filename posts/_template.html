@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- EDIT: タイトルを変更 -->
+<title>記事タイトル | 敗走録</title>
+<meta name="description" content="記事の説明文をここに">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&family=M+PLUS+1p:wght@300;400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="site-header__logo">敗走録</a>
+    <nav class="site-header__nav">
+      <a href="../index.html">トップ</a>
+      <a href="../archive.html">アーカイブ</a>
+      <a href="../about.html">このブログについて</a>
+    </nav>
+    <div class="site-header__actions">
+      <button class="theme-toggle" aria-label="テーマ切替">☀</button>
+      <button class="menu-btn" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Post -->
+<main>
+  <header class="post-header">
+    <!-- EDIT: タイトル -->
+    <h1 class="post-header__title">記事タイトル</h1>
+    <div class="post-header__meta">
+      <!-- EDIT: 日付 -->
+      <time class="post-header__date" datetime="YYYY-MM-DD">YYYY年MM月DD日</time>
+    </div>
+    <!-- EDIT: タグ（failure / learning / thought / tech / life） -->
+    <div class="post-header__tags">
+      <span class="tag tag--failure">失敗</span>
+    </div>
+    <div class="post-header__line"></div>
+  </header>
+
+  <article class="post-body">
+    <!-- EDIT: ここに記事本文を書く -->
+    <p>本文をここに書いてください。</p>
+
+    <h2>見出し</h2>
+    <p>段落のテキスト。</p>
+
+    <blockquote>
+      <p>引用テキスト。</p>
+    </blockquote>
+  </article>
+
+  <nav class="post-nav">
+    <!-- EDIT: 前後の記事リンク -->
+    <a href="#" class="post-nav__prev">&larr; 前の記事</a>
+    <a href="../archive.html" class="post-nav__archive">アーカイブ</a>
+    <a href="#" class="post-nav__next">次の記事 &rarr;</a>
+  </nav>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <nav class="site-footer__links">
+    <a href="../index.html">トップ</a>
+    <a href="../archive.html">アーカイブ</a>
+    <a href="../about.html">このブログについて</a>
+  </nav>
+  <p class="site-footer__copy">&copy; 2026 敗走録. All rights reserved.</p>
+</footer>
+
+<script src="../main.js"></script>
+</body>
+</html>

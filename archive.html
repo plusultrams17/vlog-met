@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アーカイブ | 敗走録</title>
+<meta name="description" content="敗走録の記事一覧。失敗談と学びのアーカイブ。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&family=M+PLUS+1p:wght@300;400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="site-header__logo">敗走録</a>
+    <nav class="site-header__nav">
+      <a href="index.html">トップ</a>
+      <a href="archive.html" class="active">アーカイブ</a>
+      <a href="about.html">このブログについて</a>
+    </nav>
+    <div class="site-header__actions">
+      <button class="theme-toggle" aria-label="テーマ切替">☀</button>
+      <button class="menu-btn" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Archive Content -->
+<main class="container" style="padding-top:100px">
+  <h1 style="margin-bottom:8px">アーカイブ</h1>
+  <p style="color:var(--text-secondary);font-size:.875rem;margin-bottom:40px">全 1 件の記事</p>
+
+  <!-- Tag Filter -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">すべて</button>
+    <button class="filter-btn" data-filter="failure">失敗</button>
+    <button class="filter-btn" data-filter="learning">学び</button>
+    <button class="filter-btn" data-filter="thought">考え</button>
+    <button class="filter-btn" data-filter="tech">技術</button>
+    <button class="filter-btn" data-filter="life">生活</button>
+  </div>
+
+  <!-- Archive List -->
+  <div class="archive-list">
+    <a href="posts/2026-03-24-first-post.html" class="archive-item" data-tags="failure">
+      <time class="archive-item__date" datetime="2026-03-24">2026.03.24</time>
+      <span class="archive-item__title">はじめまして、敗走録です。</span>
+      <span class="archive-item__tags">
+        <span class="tag tag--failure">失敗</span>
+      </span>
+    </a>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <nav class="site-footer__links">
+    <a href="index.html">トップ</a>
+    <a href="archive.html">アーカイブ</a>
+    <a href="about.html">このブログについて</a>
+  </nav>
+  <p class="site-footer__copy">&copy; 2026 敗走録. All rights reserved.</p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
