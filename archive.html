@@ -11,76 +11,65 @@
 <link rel="stylesheet" href="shared.css">
 </head>
 <body>
+<div class="bg-shapes" aria-hidden="true"><div class="bg-shape bg-shape--1"></div><div class="bg-shape bg-shape--2"></div></div>
 
-<!-- Floating background shapes -->
-<div class="bg-shapes" aria-hidden="true">
-  <div class="bg-shape bg-shape--1"></div>
-  <div class="bg-shape bg-shape--2"></div>
-</div>
+<header class="site-header"><div class="site-header__inner">
+<a href="index.html" class="site-header__logo"><span class="logo-mark">敗</span><span>敗走録</span></a>
+<nav class="site-header__nav"><a href="index.html">トップ</a><a href="archive.html" class="active">アーカイブ</a><a href="about.html">このブログについて</a></nav>
+<div class="site-header__actions"><button class="theme-toggle" aria-label="テーマ切替">☀</button><button class="menu-btn" aria-label="メニュー"><span></span><span></span><span></span></button></div>
+</div></header>
 
-<!-- Header -->
-<header class="site-header">
-  <div class="site-header__inner">
-    <a href="index.html" class="site-header__logo">
-      <span class="logo-mark">敗</span>
-      <span>敗走録</span>
-    </a>
-    <nav class="site-header__nav">
-      <a href="index.html">トップ</a>
-      <a href="archive.html" class="active">アーカイブ</a>
-      <a href="about.html">このブログについて</a>
-    </nav>
-    <div class="site-header__actions">
-      <button class="theme-toggle" aria-label="テーマ切替">☀</button>
-      <button class="menu-btn" aria-label="メニュー">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header>
-
-<!-- Archive Content -->
 <main class="container" style="padding-top:110px">
   <h1 style="margin-bottom:8px">アーカイブ</h1>
   <p style="color:var(--text-secondary);font-size:.875rem;letter-spacing:.06em;margin-bottom:40px">
-    <span style="font-family:var(--font-mono);color:var(--accent)">1</span> 件の記事
+    <span style="font-family:var(--font-mono);color:var(--accent)">25</span> 件の記事
   </p>
 
-  <!-- Tag Filter -->
   <div class="filter-bar">
     <button class="filter-btn active" data-filter="all">すべて</button>
     <button class="filter-btn" data-filter="failure">失敗</button>
     <button class="filter-btn" data-filter="learning">学び</button>
     <button class="filter-btn" data-filter="thought">考え</button>
-    <button class="filter-btn" data-filter="tech">技術</button>
     <button class="filter-btn" data-filter="life">生活</button>
   </div>
 
-  <!-- Archive List -->
   <div class="archive-list">
-    <a href="posts/2026-03-24-first-post.html" class="archive-item" data-tags="failure">
-      <time class="archive-item__date" datetime="2026-03-24">2026.03.24</time>
-      <span class="archive-item__title">はじめまして、敗走録です。</span>
-      <span class="archive-item__tags">
-        <span class="tag tag--failure">失敗</span>
-      </span>
-    </a>
+    <!-- 仕事・会社 -->
+    <a href="posts/2026-03-24-jikoshoukai.html" class="archive-item" data-tags="failure life"><time class="archive-item__date">2026.03.24</time><span class="archive-item__title">初日の自己紹介で名前を噛んで、そのあだ名が3年続いた</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span></span></a>
+    <a href="posts/2026-03-22-gijiroku.html" class="archive-item" data-tags="failure"><time class="archive-item__date">2026.03.22</time><span class="archive-item__title">議事録を全社に送ったつもりが、愚痴メモを全社に送っていた</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span></span></a>
+    <a href="posts/2026-03-20-joushi-namae.html" class="archive-item" data-tags="failure"><time class="archive-item__date">2026.03.20</time><span class="archive-item__title">上司の名前を半年間ずっと間違えて呼んでいた</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span></span></a>
+    <a href="posts/2026-03-18-yuukyuu.html" class="archive-item" data-tags="failure learning"><time class="archive-item__date">2026.03.18</time><span class="archive-item__title">有給を取った日に限って、自分しか知らないトラブルが起きる法則</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--learning">学び</span></span></a>
+    <a href="posts/2026-03-16-presentation.html" class="archive-item" data-tags="failure"><time class="archive-item__date">2026.03.16</time><span class="archive-item__title">プレゼンのスライドが全部前回の案件のまま、10分気づかなかった</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span></span></a>
+    <a href="posts/2026-03-14-taishoku-senpai.html" class="archive-item" data-tags="failure thought"><time class="archive-item__date">2026.03.14</time><span class="archive-item__title">退職する先輩に「あなたの仕事、誰でもできますよ」と言って泣かせた話</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--thought">考え</span></span></a>
+    <!-- 学生時代 -->
+    <a href="posts/2026-03-12-juken.html" class="archive-item" data-tags="failure"><time class="archive-item__date">2026.03.12</time><span class="archive-item__title">受験当日に会場を間違えて、タクシーの中で泣いた</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span></span></a>
+    <a href="posts/2026-03-10-kokuhaku.html" class="archive-item" data-tags="failure life"><time class="archive-item__date">2026.03.10</time><span class="archive-item__title">好きだった子に告白する手紙を、本人じゃなくて担任に渡した</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--life">生活</span></span></a>
+    <a href="posts/2026-03-08-bunkasai.html" class="archive-item" data-tags="failure learning"><time class="archive-item__date">2026.03.08</time><span class="archive-item__title">文化祭の模擬店で原価計算を間違えて、売れば売るほど赤字だった</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--learning">学び</span></span></a>
+    <a href="posts/2026-03-06-kouhai.html" class="archive-item" data-tags="failure thought"><time class="archive-item__date">2026.03.06</time><span class="archive-item__title">部活の後輩に偉そうに教えたら、翌月その後輩にレギュラーを奪われた</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--thought">考え</span></span></a>
+    <a href="posts/2026-03-04-sotsugyoushiki.html" class="archive-item" data-tags="thought"><time class="archive-item__date">2026.03.04</time><span class="archive-item__title">卒業式で泣かなかったことを20年後悔している</span><span class="archive-item__tags"><span class="tag tag--thought">考え</span></span></a>
+    <a href="posts/2026-03-02-shuuryokou.html" class="archive-item" data-tags="failure thought"><time class="archive-item__date">2026.03.02</time><span class="archive-item__title">修学旅行の自由行動で迷子になり、班のメンバーの思い出を全部消した</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--thought">考え</span></span></a>
+    <!-- 日常 -->
+    <a href="posts/2026-02-28-hikkoshi.html" class="archive-item" data-tags="failure life"><time class="archive-item__date">2026.02.28</time><span class="archive-item__title">引っ越し当日に鍵を旧居に忘れて、新居の前で一晩過ごした</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--life">生活</span></span></a>
+    <a href="posts/2026-02-26-biyouin.html" class="archive-item" data-tags="failure life"><time class="archive-item__date">2026.02.26</time><span class="archive-item__title">美容院で「お任せします」と言って、別人になって帰ってきた</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--life">生活</span></span></a>
+    <a href="posts/2026-02-24-jisui.html" class="archive-item" data-tags="learning life"><time class="archive-item__date">2026.02.24</time><span class="archive-item__title">自炊で節約するつもりが、調味料を一通り揃えたら外食より高くなった</span><span class="archive-item__tags"><span class="tag tag--learning">学び</span><span class="tag tag--life">生活</span></span></a>
+    <a href="posts/2026-02-22-seki.html" class="archive-item" data-tags="thought life"><time class="archive-item__date">2026.02.22</time><span class="archive-item__title">電車で席を譲ったら「そんなに老けて見えますか」と怒られた</span><span class="archive-item__tags"><span class="tag tag--thought">考え</span><span class="tag tag--life">生活</span></span></a>
+    <a href="posts/2026-02-20-kekkonshiki.html" class="archive-item" data-tags="failure"><time class="archive-item__date">2026.02.20</time><span class="archive-item__title">友人の結婚式のスピーチで、新郎のエピソードを新婦のエピソードと間違えた</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span></span></a>
+    <!-- お金 -->
+    <a href="posts/2026-02-18-gohoubi.html" class="archive-item" data-tags="failure learning"><time class="archive-item__date">2026.02.18</time><span class="archive-item__title">「自分へのご褒美」が月8回あった年の年末残高</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--learning">学び</span></span></a>
+    <a href="posts/2026-02-16-hoken.html" class="archive-item" data-tags="failure learning"><time class="archive-item__date">2026.02.16</time><span class="archive-item__title">保険を全部断った翌月に入院した話</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--learning">学び</span></span></a>
+    <a href="posts/2026-02-14-fukugyou.html" class="archive-item" data-tags="failure learning"><time class="archive-item__date">2026.02.14</time><span class="archive-item__title">先輩に勧められた副業に50万払って、学んだのは「断る力」だけだった</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--learning">学び</span></span></a>
+    <a href="posts/2026-02-12-yachin.html" class="archive-item" data-tags="failure thought"><time class="archive-item__date">2026.02.12</time><span class="archive-item__title">家賃を半年滞納して、大家さんから手紙じゃなくておにぎりが届いた話</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--thought">考え</span></span></a>
+    <!-- 人間関係 -->
+    <a href="posts/2026-02-10-tanjoubi.html" class="archive-item" data-tags="failure life"><time class="archive-item__date">2026.02.10</time><span class="archive-item__title">彼女の誕生日を2回連続で忘れて、3回目に覚えていたら逆に怒られた</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span><span class="tag tag--life">生活</span></span></a>
+    <a href="posts/2026-02-08-nomikai.html" class="archive-item" data-tags="failure"><time class="archive-item__date">2026.02.08</time><span class="archive-item__title">飲み会で上司の悪口を言ったら、後ろに本人がいた</span><span class="archive-item__tags"><span class="tag tag--failure">失敗</span></span></a>
+    <a href="posts/2026-02-06-shinpai.html" class="archive-item" data-tags="thought life"><time class="archive-item__date">2026.02.06</time><span class="archive-item__title">親に「心配しないで」と言い続けた結果、本当に心配されなくなった</span><span class="archive-item__tags"><span class="tag tag--thought">考え</span><span class="tag tag--life">生活</span></span></a>
+    <a href="posts/2026-02-04-itsudemo.html" class="archive-item" data-tags="thought failure"><time class="archive-item__date">2026.02.04</time><span class="archive-item__title">「いつでも連絡してね」と言った相手から本当に連絡が来て、逃げた話</span><span class="archive-item__tags"><span class="tag tag--thought">考え</span><span class="tag tag--failure">失敗</span></span></a>
   </div>
 </main>
 
-<!-- Footer -->
-<footer class="site-footer">
-  <div class="site-footer__brand">敗走録</div>
-  <nav class="site-footer__links">
-    <a href="index.html">トップ</a>
-    <span class="site-footer__dot">&middot;</span>
-    <a href="archive.html">アーカイブ</a>
-    <span class="site-footer__dot">&middot;</span>
-    <a href="about.html">このブログについて</a>
-  </nav>
-  <p class="site-footer__copy">&copy; 2026 敗走録. All rights reserved.</p>
-</footer>
-
+<footer class="site-footer"><div class="site-footer__brand">敗走録</div>
+<nav class="site-footer__links"><a href="index.html">トップ</a><span class="site-footer__dot">&middot;</span><a href="archive.html">アーカイブ</a><span class="site-footer__dot">&middot;</span><a href="about.html">このブログについて</a></nav>
+<p class="site-footer__copy">&copy; 2026 敗走録. All rights reserved.</p></footer>
 <script src="main.js"></script>
 </body>
 </html>
