@@ -1,16 +1,46 @@
 /* ===== 敗走録 - Blog Post Styles ===== */
 
+/* --- Decorative Post Header Banner --- */
+.post-header-banner{
+  max-width:700px;margin:0 auto;
+  padding:100px 24px 0;
+}
+.post-header-banner__visual{
+  height:160px;border-radius:12px;margin-bottom:28px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.post-header-banner__visual::before{
+  content:'';position:absolute;inset:0;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.post-header-banner__visual--failure{background:linear-gradient(135deg,#2a1510 0%,#3d1f18 40%,#4a2520 100%)}
+.post-header-banner__visual--learning{background:linear-gradient(135deg,#0f2a1a 0%,#183d25 40%,#1a4a2a 100%)}
+.post-header-banner__visual--thought{background:linear-gradient(135deg,#151530 0%,#1f1f45 40%,#252555 100%)}
+.post-header-banner__visual--life{background:linear-gradient(135deg,#2a1f0f 0%,#3d2e18 40%,#4a3520 100%)}
+[data-theme="light"] .post-header-banner__visual--failure{background:linear-gradient(135deg,#fce4e0,#f5c8c0,#fee8e4)}
+[data-theme="light"] .post-header-banner__visual--learning{background:linear-gradient(135deg,#e0fce8,#c0f0d0,#e4fee8)}
+[data-theme="light"] .post-header-banner__visual--thought{background:linear-gradient(135deg,#e4e0fc,#d0c8f5,#e8e4fe)}
+[data-theme="light"] .post-header-banner__visual--life{background:linear-gradient(135deg,#fcf0e0,#f5e0c0,#fef4e4)}
+.post-header-banner__emoji{
+  font-size:3.5rem;position:relative;z-index:1;
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,.3));
+  animation:emojiFloat 4s ease-in-out infinite;
+}
+
 /* --- Post Header --- */
 .post-header{
   max-width:700px;margin:0 auto;
-  padding:120px 24px 0;
+  padding:24px 24px 0;
 }
+.post-header-banner + .post-header{padding-top:0}
 .post-header__title{
   font-family:var(--font-display);font-size:2rem;font-weight:700;
   line-height:1.4;margin-bottom:12px;
 }
 .post-header__meta{
   display:flex;align-items:center;gap:12px;margin-bottom:12px;
+  flex-wrap:wrap;
 }
 .post-header__date{
   font-family:var(--font-mono);font-size:.8rem;color:var(--text-tertiary);
@@ -96,7 +126,9 @@
 
 /* --- Responsive --- */
 @media(max-width:768px){
-  .post-header{padding-top:100px}
+  .post-header-banner{padding-top:80px}
+  .post-header-banner__visual{height:120px;border-radius:8px}
+  .post-header-banner__emoji{font-size:2.5rem}
   .post-header__title{font-size:1.5rem}
   .post-body h2{font-size:1.25rem}
   .post-nav{flex-direction:column;gap:16px;text-align:center}
