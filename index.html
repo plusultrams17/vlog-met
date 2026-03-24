@@ -15,10 +15,21 @@
 </head>
 <body>
 
+<!-- Floating background shapes -->
+<div class="bg-shapes" aria-hidden="true">
+  <div class="bg-shape bg-shape--1"></div>
+  <div class="bg-shape bg-shape--2"></div>
+  <div class="bg-shape bg-shape--3"></div>
+  <div class="bg-shape bg-shape--4"></div>
+</div>
+
 <!-- Header -->
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="index.html" class="site-header__logo">敗走録</a>
+    <a href="index.html" class="site-header__logo">
+      <span class="logo-mark">敗</span>
+      <span>敗走録</span>
+    </a>
     <nav class="site-header__nav">
       <a href="index.html" class="active">トップ</a>
       <a href="archive.html">アーカイブ</a>
@@ -35,54 +46,100 @@
 
 <!-- Hero -->
 <section class="hero">
+  <!-- Decorative rings -->
+  <div class="hero__ring hero__ring--1" aria-hidden="true"></div>
+  <div class="hero__ring hero__ring--2" aria-hidden="true"></div>
+  <div class="hero__glow" aria-hidden="true"></div>
+
+  <p class="hero__label">PERSONAL BLOG</p>
   <h1 class="hero__title">敗走録</h1>
   <p class="hero__subtitle">失敗から学んだこと、考えたこと。</p>
-  <div class="hero__line"></div>
+  <div class="hero__line-group">
+    <span class="hero__line-dot"></span>
+    <span class="hero__line"></span>
+    <span class="hero__line-dot"></span>
+  </div>
+  <p class="hero__tagline">転んだ数だけ、強くなれる。</p>
 </section>
+
+<!-- Divider -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 1200 24" preserveAspectRatio="none"><path d="M0 12h520l10-8 10 16 10-16 10 8h640" stroke="currentColor" stroke-width="1" fill="none" opacity=".15"/></svg>
+</div>
 
 <!-- Latest Posts -->
 <main class="container">
   <section class="section">
-    <h2 class="section__title">最新の記事</h2>
+    <h2 class="section__title">
+      <span class="section__icon">&#9670;</span>
+      最新の記事
+      <span class="section__badge">3</span>
+    </h2>
 
     <!-- Featured Post -->
     <a href="posts/2026-03-24-first-post.html" class="post-card post-card--featured">
-      <div class="post-card__meta">
-        <time class="post-card__date" datetime="2026-03-24">2026.03.24</time>
-        <span class="tag tag--failure">失敗</span>
+      <div class="post-card__accent" aria-hidden="true"></div>
+      <div class="post-card__number" aria-hidden="true">01</div>
+      <div class="post-card__content">
+        <div class="post-card__meta">
+          <time class="post-card__date" datetime="2026-03-24">2026.03.24</time>
+          <span class="tag tag--failure">失敗</span>
+        </div>
+        <h3 class="post-card__title">はじめまして、敗走録です。</h3>
+        <p class="post-card__excerpt">このブログは、僕自身の失敗談を記録していく場所です。恥ずかしい話も、痛い経験も、全部ここに書いていきます。なぜなら、失敗を直視することでしか見えない景色があると思うから。</p>
+        <span class="post-card__readmore">続きを読む <span class="arrow">&rarr;</span></span>
       </div>
-      <h3 class="post-card__title">はじめまして、敗走録です。</h3>
-      <p class="post-card__excerpt">このブログは、僕自身の失敗談を記録していく場所です。恥ずかしい話も、痛い経験も、全部ここに書いていきます。なぜなら、失敗を直視することでしか見えない景色があると思うから。</p>
     </a>
 
-    <!-- Post 2 -->
-    <a href="posts/2026-03-24-first-post.html" class="post-card">
-      <div class="post-card__meta">
-        <time class="post-card__date" datetime="2026-03-24">2026.03.24</time>
-        <span class="tag tag--thought">考え</span>
-      </div>
-      <h3 class="post-card__title">失敗を「恥」だと思っていた頃の自分へ</h3>
-      <p class="post-card__excerpt">失敗を隠すことに全力だった時期がある。でもそれは、一番大切な学びの機会を自分で潰していたということに気づいた。</p>
-    </a>
+    <!-- Post Grid -->
+    <div class="post-grid">
+      <!-- Post 2 -->
+      <a href="posts/2026-03-24-first-post.html" class="post-card post-card--compact">
+        <div class="post-card__stripe post-card__stripe--thought" aria-hidden="true"></div>
+        <div class="post-card__content">
+          <div class="post-card__meta">
+            <time class="post-card__date" datetime="2026-03-24">2026.03.24</time>
+            <span class="tag tag--thought">考え</span>
+          </div>
+          <h3 class="post-card__title">失敗を「恥」だと思っていた頃の自分へ</h3>
+          <p class="post-card__excerpt">失敗を隠すことに全力だった時期がある。でもそれは、一番大切な学びの機会を自分で潰していたということに気づいた。</p>
+        </div>
+      </a>
 
-    <!-- Post 3 -->
-    <a href="posts/2026-03-24-first-post.html" class="post-card">
-      <div class="post-card__meta">
-        <time class="post-card__date" datetime="2026-03-24">2026.03.24</time>
-        <span class="tag tag--learning">学び</span>
-      </div>
-      <h3 class="post-card__title">「もう一度やり直せる」と思えるようになるまで</h3>
-      <p class="post-card__excerpt">何度も同じ失敗を繰り返して、ようやく気づいたパターンがあった。失敗の中に、次の一歩のヒントが隠れている。</p>
-    </a>
+      <!-- Post 3 -->
+      <a href="posts/2026-03-24-first-post.html" class="post-card post-card--compact">
+        <div class="post-card__stripe post-card__stripe--learning" aria-hidden="true"></div>
+        <div class="post-card__content">
+          <div class="post-card__meta">
+            <time class="post-card__date" datetime="2026-03-24">2026.03.24</time>
+            <span class="tag tag--learning">学び</span>
+          </div>
+          <h3 class="post-card__title">「もう一度やり直せる」と思えるようになるまで</h3>
+          <p class="post-card__excerpt">何度も同じ失敗を繰り返して、ようやく気づいたパターンがあった。失敗の中に、次の一歩のヒントが隠れている。</p>
+        </div>
+      </a>
+    </div>
 
+    <!-- View All -->
+    <div style="text-align:center;margin-top:48px">
+      <a href="archive.html" class="btn-outline">すべての記事を見る &rarr;</a>
+    </div>
   </section>
 </main>
 
+<!-- Divider -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 1200 24" preserveAspectRatio="none"><path d="M0 12h520l10-8 10 16 10-16 10 8h640" stroke="currentColor" stroke-width="1" fill="none" opacity=".15"/></svg>
+</div>
+
 <!-- Footer -->
 <footer class="site-footer">
+  <div class="site-footer__brand">敗走録</div>
   <nav class="site-footer__links">
     <a href="index.html">トップ</a>
+    <span class="site-footer__dot">&middot;</span>
     <a href="archive.html">アーカイブ</a>
+    <span class="site-footer__dot">&middot;</span>
     <a href="about.html">このブログについて</a>
   </nav>
   <p class="site-footer__copy">&copy; 2026 敗走録. All rights reserved.</p>

@@ -12,10 +12,19 @@
 </head>
 <body>
 
+<!-- Floating background shapes -->
+<div class="bg-shapes" aria-hidden="true">
+  <div class="bg-shape bg-shape--1"></div>
+  <div class="bg-shape bg-shape--2"></div>
+</div>
+
 <!-- Header -->
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="index.html" class="site-header__logo">敗走録</a>
+    <a href="index.html" class="site-header__logo">
+      <span class="logo-mark">敗</span>
+      <span>敗走録</span>
+    </a>
     <nav class="site-header__nav">
       <a href="index.html">トップ</a>
       <a href="archive.html" class="active">アーカイブ</a>
@@ -31,9 +40,11 @@
 </header>
 
 <!-- Archive Content -->
-<main class="container" style="padding-top:100px">
+<main class="container" style="padding-top:110px">
   <h1 style="margin-bottom:8px">アーカイブ</h1>
-  <p style="color:var(--text-secondary);font-size:.875rem;margin-bottom:40px">全 1 件の記事</p>
+  <p style="color:var(--text-secondary);font-size:.875rem;letter-spacing:.06em;margin-bottom:40px">
+    <span style="font-family:var(--font-mono);color:var(--accent)">1</span> 件の記事
+  </p>
 
   <!-- Tag Filter -->
   <div class="filter-bar">
@@ -59,9 +70,12 @@
 
 <!-- Footer -->
 <footer class="site-footer">
+  <div class="site-footer__brand">敗走録</div>
   <nav class="site-footer__links">
     <a href="index.html">トップ</a>
+    <span class="site-footer__dot">&middot;</span>
     <a href="archive.html">アーカイブ</a>
+    <span class="site-footer__dot">&middot;</span>
     <a href="about.html">このブログについて</a>
   </nav>
   <p class="site-footer__copy">&copy; 2026 敗走録. All rights reserved.</p>

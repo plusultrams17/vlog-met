@@ -14,10 +14,19 @@
 </head>
 <body>
 
+<!-- Floating background shapes -->
+<div class="bg-shapes" aria-hidden="true">
+  <div class="bg-shape bg-shape--1"></div>
+  <div class="bg-shape bg-shape--2"></div>
+</div>
+
 <!-- Header -->
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="../index.html" class="site-header__logo">敗走録</a>
+    <a href="../index.html" class="site-header__logo">
+      <span class="logo-mark">敗</span>
+      <span>敗走録</span>
+    </a>
     <nav class="site-header__nav">
       <a href="../index.html">トップ</a>
       <a href="../archive.html">アーカイブ</a>
@@ -70,9 +79,12 @@
 
 <!-- Footer -->
 <footer class="site-footer">
+  <div class="site-footer__brand">敗走録</div>
   <nav class="site-footer__links">
     <a href="../index.html">トップ</a>
+    <span class="site-footer__dot">&middot;</span>
     <a href="../archive.html">アーカイブ</a>
+    <span class="site-footer__dot">&middot;</span>
     <a href="../about.html">このブログについて</a>
   </nav>
   <p class="site-footer__copy">&copy; 2026 敗走録. All rights reserved.</p>
