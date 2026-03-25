@@ -110,12 +110,9 @@ h3{font-size:1.25rem}
   color:var(--accent);letter-spacing:.04em;
   display:flex;align-items:center;gap:10px;
 }
-.logo-mark{
-  display:flex;align-items:center;justify-content:center;
+.logo-img{
   width:32px;height:32px;border-radius:8px;
-  background:linear-gradient(135deg,var(--accent),var(--accent-dim));
-  color:#0f0f12;font-size:.85rem;font-weight:700;
-  box-shadow:0 2px 8px rgba(232,150,75,.25);
+  object-fit:contain;
 }
 
 .site-header__nav{display:flex;gap:28px;align-items:center}
@@ -174,6 +171,14 @@ h3{font-size:1.25rem}
   animation:ringPulse 6s ease-in-out infinite 3s;
 }
 @keyframes ringPulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.15}50%{transform:translate(-50%,-50%) scale(1.05);opacity:.08}}
+
+.hero__logo{
+  width:180px;height:auto;
+  margin-bottom:24px;
+  filter:drop-shadow(0 4px 24px rgba(232,150,75,.2));
+  animation:heroLogoIn .8s ease-out both;
+}
+@keyframes heroLogoIn{from{opacity:0;transform:translateY(16px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
 
 .hero__label{
   font-family:var(--font-mono);font-size:.7rem;
@@ -561,6 +566,13 @@ h3{font-size:1.25rem}
   animation:emojiFloat 4s ease-in-out infinite;
 }
 @keyframes emojiFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+.post-card__icon{
+  width:48px;height:auto;position:relative;z-index:1;
+  filter:drop-shadow(0 2px 8px rgba(0,0,0,.3));
+  animation:emojiFloat 4s ease-in-out infinite;
+}
+.post-card--featured .post-card__icon{width:64px}
 
 /* ===== READING TIME BADGE ===== */
 .reading-time{
