@@ -1,0 +1,12 @@
+{
+  "name": "敗走録",
+  "short_name": "敗走録",
+  "description": "失敗談とそこから学んだことを記録するブログ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f12",
+  "theme_color": "#e8964b",
+  "icons": [
+    {"src": "/favicon.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vlog-met.vercel.app/sitemap.xml

@@ -400,6 +400,138 @@
     });
   }
 
+  // ===== Search Modal =====
+  function initSearch() {
+    // Build the search modal markup
+    var overlay = document.createElement('div');
+    overlay.className = 'search-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-label', '記事を検索');
+    overlay.setAttribute('aria-modal', 'true');
+
+    overlay.innerHTML = '<div class="search-modal">' +
+      '<div class="search-modal__input-wrap">' +
+      '<svg class="search-modal__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>' +
+      '<input class="search-modal__input" type="text" placeholder="記事を検索..." aria-label="検索キーワード">' +
+      '<span class="search-modal__kbd">ESC</span>' +
+      '</div>' +
+      '<div class="search-results" aria-live="polite">' +
+      '<div class="search-hint">キーワードを入力してください</div>' +
+      '</div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    var input = overlay.querySelector('.search-modal__input');
+    var results = overlay.querySelector('.search-results');
+    var previousFocus = null;
+
+    // Determine base path for links
+    var isInPosts = window.location.pathname.replace(/\\/g, '/').indexOf('/posts/') !== -1;
+    var basePath = isInPosts ? '' : 'posts/';
+
+    function openSearch() {
+      previousFocus = document.activeElement;
+      overlay.classList.add('open');
+      input.value = '';
+      results.innerHTML = '<div class="search-hint">キーワードを入力してください</div>';
+      setTimeout(function () { input.focus(); }, 100);
+    }
+
+    function closeSearch() {
+      overlay.classList.remove('open');
+      if (previousFocus) previousFocus.focus();
+    }
+
+    function performSearch(query) {
+      query = query.trim().toLowerCase();
+      if (!query) {
+        results.innerHTML = '<div class="search-hint">キーワードを入力してください</div>';
+        return;
+      }
+
+      var matches = POSTS.filter(function (p) {
+        return p.title.toLowerCase().indexOf(query) !== -1;
+      });
+
+      if (!matches.length) {
+        results.innerHTML = '<div class="search-empty">「' + query.replace(/</g, '&lt;') + '」に一致する記事が見つかりませんでした</div>';
+        return;
+      }
+
+      var html = '';
+      matches.forEach(function (p) {
+        html += '<a href="' + basePath + p.slug + '.html" class="search-result">';
+        html += '<span class="search-result__date">' + p.date + '</span>';
+        html += '<span class="search-result__title">' + p.title + '</span>';
+        html += '</a>';
+      });
+      results.innerHTML = html;
+    }
+
+    // Open button handlers
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('.search-open')) {
+        e.preventDefault();
+        openSearch();
+      }
+    });
+
+    // Close on overlay click
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeSearch();
+    });
+
+    // Close on ESC, run search on input
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) {
+        closeSearch();
+      }
+      // Ctrl+K or Cmd+K to open search
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        if (overlay.classList.contains('open')) { closeSearch(); } else { openSearch(); }
+      }
+    });
+
+    input.addEventListener('input', function () {
+      performSearch(input.value);
+    });
+  }
+
+  // ===== Note CTA =====
+  function initNoteCTA() {
+    var postBody = document.querySelector('.post-body');
+    var postNav = document.querySelector('.post-nav');
+    if (!postBody || !postNav) return;
+
+    var html = '<div class="note-cta">' +
+      '<div class="note-cta__inner">' +
+      '<p class="note-cta__label">もっと深い失敗談を読む</p>' +
+      '<h3 class="note-cta__title">noteで限定記事を公開中</h3>' +
+      '<p class="note-cta__desc">ブログには書けない、さらに踏み込んだ失敗と学びの記録。</p>' +
+      '<a href="https://note.com/" class="note-cta__btn" target="_blank" rel="noopener">noteで読む \u2192</a>' +
+      '</div>' +
+      '</div>';
+
+    postNav.insertAdjacentHTML('beforebegin', html);
+
+    // Scroll animation for the CTA
+    var ctaInner = document.querySelector('.note-cta__inner');
+    if (ctaInner && 'IntersectionObserver' in window) {
+      var ctaObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            ctaObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      ctaObs.observe(ctaInner);
+    } else if (ctaInner) {
+      ctaInner.classList.add('is-visible');
+    }
+  }
+
   // ===== INIT =====
   document.addEventListener('DOMContentLoaded', function () {
     initProgressBar();
@@ -414,5 +546,7 @@
     initShareButtons();
     initAuthorCard();
     initRelatedPosts();
+    initSearch();
+    initNoteCTA();
   });
 })();
