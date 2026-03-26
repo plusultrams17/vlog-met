@@ -17,7 +17,21 @@
       "WebFetch(domain:note.com)",
       "WebSearch",
       "WebFetch(domain:www.darkmodedesign.com)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(python3:*)",
+      "Bash(grep:*)",
+      "Bash(done)",
+      "Bash(for:*)",
+      "Bash(do sed -i 's|<link rel=\"\"apple-touch-icon\"\" href=\"\"../favicon.png\"\">|<link rel=\"\"apple-touch-icon\"\" href=\"\"../favicon.png\"\">\\\\n<meta name=\"\"theme-color\"\" content=\"\"#e8964b\"\">\\\\n<link rel=\"\"manifest\"\" href=\"\"/manifest.json\"\">|' \"$f\")",
+      "Bash(echo:*)",
+      "Bash(python add_meta.py:*)",
+      "Bash(git log:*)",
+      "Skill(ai-image-generation)",
+      "Bash(where:*)",
+      "Bash(npx infsh:*)",
+      "Bash(npx @anthropic-ai/inference-sh:*)",
+      "Bash(npx inference-sh:*)",
+      "Bash(cmd.exe /c \"where infsh\")"
     ]
   }
 }
