@@ -5,6 +5,7 @@
 
   /* ===== POSTS DATABASE (for related posts) ===== */
   var POSTS = [
+    { slug: '2026-04-05-daihyou', title: '「代表」という肩書きだけ持って、誰にも頼られなくなった日', tags: ['failure','learning'], date: '2026.04.05' },
     { slug: '2026-04-04-shippai-kataru', title: '自分の失敗を人に語れるようになるまで、何年もかかった話', tags: ['thought'], date: '2026.04.04' },
     { slug: '2026-04-03-title-60', title: 'ブログのタイトルを60個考えて満足して、本文を1本も書かなかった週末', tags: ['failure','thought'], date: '2026.04.03' },
     { slug: '2026-04-02-ai-setsumei', title: 'AIに「すぐ終わるだろ」と思って聞いたら、説明だけで1時間かかった話', tags: ['failure','life'], date: '2026.04.02' },
